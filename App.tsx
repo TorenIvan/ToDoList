@@ -1,11 +1,19 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View, Text, ImageBackground } from 'react-native';
+import { lightDesktopBackgroundImage } from "./src/assets/index";
 
-const App = () => {
+const App = () : JSX.Element => {  
   return (
     <View style={styles.container}>
-      <Text>Open up ToDoListApp to start working on your app!</Text>
-      <StatusBar style="auto" />
+      <ImageBackground 
+        source={lightDesktopBackgroundImage}
+        resizeMode="cover"
+        style={styles.imageBackground}
+      >
+        <View style={styles.header}>
+          <Text>TODO</Text>
+          <Text>ajghb</Text>
+        </View>
+      </ImageBackground>
     </View>
   );
 }
@@ -18,5 +26,17 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  imageBackground: {
+    flex: .4,
+    width: "100%",
+    justifyContent: "flex-start",
+  },
+  header: {
+    flex: .5,
+    flexDirection: "row",
+    width: "90%",
+    justifyContent: "space-between",
+    alignItems: "center"
   },
 });
