@@ -25,15 +25,16 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
   },
   imageBackground: {
-    flex: .4,
+    flex: .35,
     width: "100%",
     justifyContent: "flex-start",
+    alignItems: "center"
   },
   header: {
-    flex: .5,
+    flex: .7,
     flexDirection: "row",
     width: "90%",
     justifyContent: "space-between",
