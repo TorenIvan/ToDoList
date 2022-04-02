@@ -85,7 +85,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   todo: {
-    fontSize: 22,
-    letterSpacing: 3
+    fontSize: 27,
+    letterSpacing: 12
   },
 });
