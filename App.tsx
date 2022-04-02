@@ -1,43 +1,68 @@
-import { StyleSheet, View, Text, ImageBackground } from 'react-native';
+import {
+  StyleSheet,
+  View,
+  Text,
+  ImageBackground,
+  Dimensions,
+} from "react-native";
 import { lightDesktopBackgroundImage } from "./src/assets/index";
 
-const App = () : JSX.Element => {  
+const App = (): JSX.Element => {
   return (
     <View style={styles.container}>
-      <ImageBackground 
-        source={lightDesktopBackgroundImage}
-        resizeMode="cover"
-        style={styles.imageBackground}
-      >
-        <View style={styles.header}>
-          <Text>TODO</Text>
-          <Text>ajghb</Text>
-        </View>
-      </ImageBackground>
+      <View style={styles.imageContainer}>
+        <ImageBackground
+          source={lightDesktopBackgroundImage}
+          style={styles.imageBackground}
+          imageStyle={styles.imageStyle}
+        >
+          <View style={styles.header}>
+            <View style={styles.title}>
+              <Text>TODO</Text>
+              <Text>ajghb</Text>
+            </View>
+          </View>
+        </ImageBackground>
+      </View>
     </View>
   );
-}
+};
 
 export default App;
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'flex-start',
+    alignItems: "center",
+    justifyContent: "flex-start",
+  },
+  imageContainer: {
+    margin: 0,
+    padding: 0,
+    height: Dimensions.get('window').height * .3,
+    width: "100%",
+    justifyContent: "flex-end",
+    alignItems: "center",
   },
   imageBackground: {
-    flex: .35,
     width: "100%",
-    justifyContent: "flex-start",
-    alignItems: "center"
+    height: Dimensions.get('window').height * .3,
+    position: "absolute",
+    top: 0.1 * Dimensions.get('window').height * .3,
+  },
+  imageStyle: {
+    resizeMode: "cover",
   },
   header: {
-    flex: .7,
-    flexDirection: "row",
-    width: "90%",
-    justifyContent: "space-between",
-    alignItems: "center"
+    flex: .4,
+    marginLeft: "5%",
+    marginRight: "5%",
+    justifyContent: "flex-end",
   },
+  title: {
+    flexDirection: "row",
+    width: "100%",
+    justifyContent: "space-between",
+    alignItems: "center",
+  }
 });
