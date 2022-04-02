@@ -4,32 +4,27 @@ import {
   View,
   Text,
   ImageBackground,
-  Dimensions,
 } from "react-native";
 import {
   lightMobileBackgroundImage,
   darkMobileBackgroundImage,
 } from "../assets/index";
-import { Theme } from "../utils/constants/theme";
-
-type theming = {
-  isLight: boolean;
-  theme: Theme;
-}
+import { globalThemeType } from "../utils";
+import { imageHeight } from "../utils";
 
 interface Props {
-  theming: theming;
+  globalTheme: globalThemeType;
   onThemeChange(): any;
 }
 
 const Header: React.FC<Props> = (props): JSX.Element => {
-  console.log(props.theming);
+  console.log(props.globalTheme);
   
   return (
     <View style={styles.header}>
       <ImageBackground
         source={
-          props.theming.isLight
+          props.globalTheme.isLight
             ? lightMobileBackgroundImage
             : darkMobileBackgroundImage
         }
@@ -51,15 +46,15 @@ export default Header;
 
 const styles = StyleSheet.create({
   header: {
-    height: Dimensions.get("window").height * 0.3,
+    height: imageHeight,
     justifyContent: "flex-end",
     alignItems: "center",
   },
   imageBackground: {
     width: "100%",
-    height: Dimensions.get("window").height * 0.3,
+    height: imageHeight,
     position: "absolute",
-    top: 0.1 * Dimensions.get("window").height * 0.3,
+    top: 0,
   },
   imageStyle: {
     resizeMode: "cover",

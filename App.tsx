@@ -1,15 +1,10 @@
 import React, { useState } from "react";
 import { StyleSheet, View } from "react-native";
-import theme, { Theme, dark, light } from "./src/utils/constants/theme.js";
+import { theme, dark, light, globalThemeType } from "./src/utils";
 import Header from "./src/containers/Header";
 
-interface globalTheme {
-  isLight: boolean;
-  theme: Theme;
-}
-
 const App: React.FC = (): JSX.Element => {
-  const [globalTheme, setGlobalTheme] = useState<globalTheme>({
+  const [globalTheme, setGlobalTheme] = useState<globalThemeType>({
     theme: theme,
     isLight: true,
   });
@@ -25,7 +20,7 @@ const App: React.FC = (): JSX.Element => {
 
   return (
     <View style={styles.container}>
-      <Header theming={globalTheme} onThemeChange={handleThemeChange} />
+      <Header globalTheme={globalTheme} onThemeChange={handleThemeChange} />
     </View>
   );
 };

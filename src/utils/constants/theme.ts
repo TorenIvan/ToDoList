@@ -20,8 +20,3 @@ export const light = {
   DarkGrayishBlue: "hsl(236, 9%, 61%)",
   VeryDarkGrayishBlue: "hsl(235, 19%, 35%)",
 };
-
-export type Theme = typeof light | typeof dark;
-
-const theme : Theme = {...light};
-export default theme;
