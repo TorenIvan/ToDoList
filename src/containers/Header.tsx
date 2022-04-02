@@ -6,6 +6,8 @@ import {
   ImageBackground,
   TouchableOpacity,
 } from "react-native";
+import AppLoading from 'expo-app-loading';
+import { useFonts, JosefinSans_400Regular, JosefinSans_700Bold } from "@expo-google-fonts/josefin-sans";
 import {
   lightMobileBackgroundImage,
   darkMobileBackgroundImage,
@@ -21,6 +23,12 @@ interface Props {
 }
 
 const Header: React.FC<Props> = ({ globalTheme, onThemeChange }): JSX.Element => {
+  let [fontsLoaded] = useFonts({
+    JosefinSans_400Regular,
+    JosefinSans_700Bold,
+  });
+
+  if (!fontsLoaded) return <AppLoading />;
   return (
     <View style={styles.header}>
       <ImageBackground
@@ -34,7 +42,7 @@ const Header: React.FC<Props> = ({ globalTheme, onThemeChange }): JSX.Element =>
       >
         <View style={styles.titleContainer}>
           <View style={styles.title}>
-            <Text>TODO</Text>
+            <Text style={[styles.todo, {color: globalTheme.theme.titleText, fontFamily: "JosefinSans_700Bold"}]}>TODO</Text>
             <TouchableOpacity onPress={onThemeChange}>
               {globalTheme.isLight 
                 ? <MoonIcon />
@@ -75,5 +83,9 @@ const styles = StyleSheet.create({
     width: "100%",
     justifyContent: "space-between",
     alignItems: "center",
+  },
+  todo: {
+    fontSize: 22,
+    letterSpacing: 3
   },
 });

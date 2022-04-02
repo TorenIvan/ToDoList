@@ -4,6 +4,7 @@ const primary = {
 
 export const dark = {
   ...primary,
+  titleText: "hsl(236, 33%, 92%)",
   veryDarkBlue: "hsl(235, 21%, 11%)",
   veryDarkDesaturatedBlue: "hsl(235, 24%, 19%)",
   lightGrayishBlue: "hsl(234, 39%, 85%)",
@@ -14,6 +15,7 @@ export const dark = {
 
 export const light = {
   ...primary,
+  titleText: "hsl(236, 33%, 92%)",
   veryLightGray: "hsl(0, 0%, 98%)",
   veryLightGrayishBlue: "hsl(236, 33%, 92%)",
   LightGrayishBlue: "hsl(233, 11%, 84%)",
