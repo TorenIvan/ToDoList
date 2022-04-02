@@ -1,12 +1,12 @@
 import faviconIcon from "./icons/favicon.png";
 
-import checkIcon from "./icons/icon-check.svg";
+import CheckIcon from "./icons/checkIcon";
 
-import crossIcon from "./icons/icon-cross.svg";
+import CrossIcon from "./icons/crossIcon";
 
-import moonIcon from "./icons/icon-moon.svg";
+import MoonIcon from "./icons/moonIcon";
 
-import sunIcon from "./icons/icon-sun.svg";
+import SunIcon from "./icons/sunIcon";
 
 import darkDesktopBackgroundImage from "./images/bg-desktop-dark.jpg";
 
@@ -18,10 +18,10 @@ import lightMobileBackgroundImage from "./images/bg-mobile-light.jpg";
 
 export {
   faviconIcon,
-  checkIcon,
-  crossIcon,
-  moonIcon,
-  sunIcon,
+  CheckIcon,
+  CrossIcon,
+  MoonIcon,
+  SunIcon,
   darkDesktopBackgroundImage,
   lightDesktopBackgroundImage,
   darkMobileBackgroundImage,

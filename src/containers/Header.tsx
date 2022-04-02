@@ -4,10 +4,13 @@ import {
   View,
   Text,
   ImageBackground,
+  TouchableOpacity,
 } from "react-native";
 import {
   lightMobileBackgroundImage,
   darkMobileBackgroundImage,
+  SunIcon,
+  MoonIcon,
 } from "../assets/index";
 import { globalThemeType } from "../utils";
 import { imageHeight } from "../utils";
@@ -17,14 +20,12 @@ interface Props {
   onThemeChange(): any;
 }
 
-const Header: React.FC<Props> = (props): JSX.Element => {
-  console.log(props.globalTheme);
-  
+const Header: React.FC<Props> = ({ globalTheme, onThemeChange }): JSX.Element => {
   return (
     <View style={styles.header}>
       <ImageBackground
         source={
-          props.globalTheme.isLight
+          globalTheme.isLight
             ? lightMobileBackgroundImage
             : darkMobileBackgroundImage
         }
@@ -34,7 +35,11 @@ const Header: React.FC<Props> = (props): JSX.Element => {
         <View style={styles.titleContainer}>
           <View style={styles.title}>
             <Text>TODO</Text>
-            <Text>ajghb</Text>
+            <TouchableOpacity onPress={onThemeChange}>
+              {globalTheme.isLight 
+                ? <MoonIcon />
+                : <SunIcon />}
+            </TouchableOpacity>
           </View>
         </View>
       </ImageBackground>
@@ -60,7 +65,7 @@ const styles = StyleSheet.create({
     resizeMode: "cover",
   },
   titleContainer: {
-    flex: 0.4,
+    flex: 0.35,
     marginLeft: "5%",
     marginRight: "5%",
     justifyContent: "flex-end",
