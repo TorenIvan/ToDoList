@@ -10,17 +10,26 @@ import {
   lightMobileBackgroundImage,
   darkMobileBackgroundImage,
 } from "../assets/index";
+import { Theme } from "../utils/constants/theme";
 
-interface Props {
-  lightBackgroundImage: boolean;
+type theming = {
+  isLight: boolean;
+  theme: Theme;
 }
 
-const Header: React.FC<Props> = ({ lightBackgroundImage }) => {
+interface Props {
+  theming: theming;
+  onThemeChange(): any;
+}
+
+const Header: React.FC<Props> = (props): JSX.Element => {
+  console.log(props.theming);
+  
   return (
     <View style={styles.header}>
       <ImageBackground
         source={
-          lightBackgroundImage
+          props.theming.isLight
             ? lightMobileBackgroundImage
             : darkMobileBackgroundImage
         }

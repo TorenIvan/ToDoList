@@ -21,8 +21,7 @@ export const light = {
   VeryDarkGrayishBlue: "hsl(235, 19%, 35%)",
 };
 
-type Theme = typeof light | typeof dark;
+export type Theme = typeof light | typeof dark;
 
-export interface CustomThemeProps {
-  theme?: Theme;
-}
+const theme : Theme = {...light};
+export default theme;
