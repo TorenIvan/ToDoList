@@ -9,7 +9,7 @@ type globalThemeType = {
   theme: Theme;
 };
 
-export { theme, dark, light, globalThemeType };
+export { theme, dark, light, globalThemeType, Theme };
 
 
 /* Metrics */

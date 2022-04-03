@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { StyleSheet, View } from "react-native";
 import { theme, dark, light, globalThemeType } from "./src/utils";
 import Header from "./src/containers/Header";
+import ListItem from "./src/components/ListItem";
+import ListItems from "./src/containers/ListItems";
 import { imageHeight } from "./src/utils";
 
 const App: React.FC = (): JSX.Element => {
@@ -22,10 +24,11 @@ const App: React.FC = (): JSX.Element => {
       <View style={styles.header}>
         <Header globalTheme={globalTheme} onThemeChange={handleThemeChange} />
         {/* Add New To-Do Item */}
-        <View style={{backgroundColor: "red", height: "20%", width: "80%", marginTop: "16%"}}></View>
+        <ListItem theme={globalTheme.theme} isAddNew={true} />
       </View>
       {/* List of To-Do Items */}
-      <View
+      {/* <ListItems /> */}
+      {/* <View
         style={{
           backgroundColor: "red",
           flex: .8,
@@ -34,7 +37,7 @@ const App: React.FC = (): JSX.Element => {
           alignSelf: "center",
         }}
       >
-      </View>
+      </View> */}
     </View>
   );
 };
@@ -49,10 +52,9 @@ const styles = StyleSheet.create({
   },
   header: {
     width: "100%",
-    height: imageHeight * 1.1,
+    height: imageHeight * 1,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "red",
     zIndex: -1,
   },
 });
