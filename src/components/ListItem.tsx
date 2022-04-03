@@ -8,7 +8,7 @@ import {
 } from "@expo-google-fonts/josefin-sans";
 import { RadioButton } from 'react-native-paper';
 
-type RadioButtonValue = 'checked'|'unchecked';
+type RadioButtonType = 'checked'|'unchecked';
 
 interface Props {
   theme: Theme;
@@ -16,12 +16,8 @@ interface Props {
   isAddNew?: boolean;
 }
 
-const ListItem: React.FC<Props> = ({
-  theme,
-  isActive = false,
-  isAddNew = false,
-}): JSX.Element => {
-  const [checked, setChecked] = useState<RadioButtonValue>('checked');
+const ListItem: React.FC<Props> = ({ theme, isActive = false, isAddNew = false }): JSX.Element => {
+  const [checked, setChecked] = useState<RadioButtonType>('checked');
   let [fontsLoaded] = useFonts({
     JosefinSans_400Regular,
   });
