@@ -2,13 +2,10 @@ import { StyleSheet, Text, View } from "react-native";
 import { Theme } from "../utils";
 import React, { useState } from "react";
 import AppLoading from "expo-app-loading";
-import {
-  useFonts,
-  JosefinSans_400Regular,
-} from "@expo-google-fonts/josefin-sans";
-import { RadioButton } from 'react-native-paper';
+import { useFonts, JosefinSans_400Regular } from "@expo-google-fonts/josefin-sans";
+import { RadioButton } from "react-native-paper";
 
-type RadioButtonType = 'checked'|'unchecked';
+type RadioButtonType = "checked" | "unchecked";
 
 interface Props {
   theme: Theme;
@@ -17,7 +14,7 @@ interface Props {
 }
 
 const ListItem: React.FC<Props> = ({ theme, isActive = false, isAddNew = false }): JSX.Element => {
-  const [checked, setChecked] = useState<RadioButtonType>('checked');
+  const [checked, setChecked] = useState<RadioButtonType>("unchecked");
   let [fontsLoaded] = useFonts({
     JosefinSans_400Regular,
   });
@@ -27,21 +24,21 @@ const ListItem: React.FC<Props> = ({ theme, isActive = false, isAddNew = false }
   if (isActive) textColor = theme.activeText;
 
   const handleRadioButtonPress = () => {
-    setChecked(currentChecked => (
-        currentChecked == 'checked' 
-            ? 'unchecked' 
-            : 'checked'
-    ));
-  }
+    console.log(checked);
+    setChecked(currentChecked => (currentChecked == "checked" ? "unchecked" : "checked"));
+  };
 
   if (!fontsLoaded) return <AppLoading />;
   return (
-    <View style={[styles.itemContainer, {backgroundColor: textColor}]}>
+    <View style={[styles.itemContainer, { backgroundColor: textColor }]}>
       <RadioButton
-        value="checked"
-        status={checked}
-        onPress={handleRadioButtonPress}
-        color={theme.veryDarkGrayishBlue}
+        value={checked}
+        status={checked == "checked" ? "checked" : "unchecked"}
+        onPress={() => {
+          console.log("Mpika opn pressed");
+          setChecked(checked == "checked" ? "unchecked" : "checked")
+        }}
+        color={theme.lightGrayishBlue}
       />
     </View>
   );
@@ -57,6 +54,6 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     flexDirection: "row",
     justifyContent: "space-around",
-    alignItems: "center"
+    alignItems: "center",
   },
 });

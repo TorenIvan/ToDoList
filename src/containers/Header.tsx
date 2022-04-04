@@ -1,11 +1,5 @@
 import React from "react";
-import {
-  StyleSheet,
-  View,
-  Text,
-  ImageBackground,
-  TouchableOpacity,
-} from "react-native";
+import { StyleSheet, View, Text, ImageBackground, TouchableOpacity } from "react-native";
 import AppLoading from "expo-app-loading";
 import {
   useFonts,
@@ -35,11 +29,7 @@ const Header: React.FC<Props> = ({ globalTheme, onThemeChange }): JSX.Element =>
   if (!fontsLoaded) return <AppLoading />;
   return (
     <ImageBackground
-      source={
-        globalTheme.isLight
-          ? lightMobileBackgroundImage
-          : darkMobileBackgroundImage
-      }
+      source={globalTheme.isLight ? lightMobileBackgroundImage : darkMobileBackgroundImage}
       style={styles.imageBackground}
       imageStyle={styles.imageStyle}
     >
