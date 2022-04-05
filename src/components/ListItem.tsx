@@ -1,11 +1,9 @@
 import { StyleSheet, Text, View } from "react-native";
-import { Theme } from "../utils";
+import { Theme, RadioButtonValueType } from "../utils";
 import React, { useState } from "react";
 import AppLoading from "expo-app-loading";
 import { useFonts, JosefinSans_400Regular } from "@expo-google-fonts/josefin-sans";
-import { RadioButton } from "react-native-paper";
-
-type RadioButtonType = "checked" | "unchecked";
+import RadioButton from "./Buttons/RadioButton";
 
 interface Props {
   theme: Theme;
@@ -14,7 +12,7 @@ interface Props {
 }
 
 const ListItem: React.FC<Props> = ({ theme, isActive = false, isAddNew = false }): JSX.Element => {
-  const [checked, setChecked] = useState<RadioButtonType>("unchecked");
+  const [checked, setChecked] = useState<RadioButtonValueType>("checked");
   let [fontsLoaded] = useFonts({
     JosefinSans_400Regular,
   });
@@ -24,8 +22,7 @@ const ListItem: React.FC<Props> = ({ theme, isActive = false, isAddNew = false }
   if (isActive) textColor = theme.activeText;
 
   const handleRadioButtonPress = () => {
-    console.log(checked);
-    setChecked(currentChecked => (currentChecked == "checked" ? "unchecked" : "checked"));
+    setChecked(checked == "checked" ? "unchecked" : "checked");
   };
 
   if (!fontsLoaded) return <AppLoading />;
@@ -33,12 +30,9 @@ const ListItem: React.FC<Props> = ({ theme, isActive = false, isAddNew = false }
     <View style={[styles.itemContainer, { backgroundColor: textColor }]}>
       <RadioButton
         value={checked}
-        status={checked == "checked" ? "checked" : "unchecked"}
-        onPress={() => {
-          console.log("Mpika opn pressed");
-          setChecked(checked == "checked" ? "unchecked" : "checked")
-        }}
-        color={theme.lightGrayishBlue}
+        onRadioButtonPress={handleRadioButtonPress}
+        checkedColor={theme.veryDarkGrayishBlue}
+        borderColor={theme.lightGrayishBlue}
       />
     </View>
   );
