@@ -1,5 +1,5 @@
 /*** Types ***/
-import { dark, light, initialTheme } from "./constants/theme";
+import { dark, light } from "./constants/theme";
 
 type Theme = typeof light | typeof dark;
 
@@ -19,6 +19,8 @@ export { globalThemeType, changeThemeType, changeTheme, Theme, RadioButtonValueT
 export { imageHeight } from "./constants/dimensions";
 
 /*** Themes ***/
-const theme: Theme = { ...light };
-
-export { dark, light, theme, initialTheme };
+const initialTheme: globalThemeType = {
+  theme: { ...light },
+  isLight: true,
+};
+export { dark, light, initialTheme };
