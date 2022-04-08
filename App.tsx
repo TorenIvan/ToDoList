@@ -1,34 +1,34 @@
-import React, { useState } from "react";
+import React, { useState, createContext } from "react";
 import { StyleSheet, View } from "react-native";
-import { theme, dark, light, globalThemeType } from "./src/utils";
 import Header from "./src/containers/Header";
 import ListItem from "./src/components/ListItem";
-import ListItems from "./src/containers/ListItems";
+import AppLoading from "expo-app-loading";
+import {
+  useFonts,
+  JosefinSans_400Regular,
+  JosefinSans_700Bold,
+} from "@expo-google-fonts/josefin-sans";
+import ThemeProvider from "./src/store/globalTheme";
 import { imageHeight } from "./src/utils";
 
 const App: React.FC = (): JSX.Element => {
-  const [globalTheme, setGlobalTheme] = useState<globalThemeType>({
-    theme: theme,
-    isLight: true,
+  let [fontsLoaded] = useFonts({
+    "JosefinSans-Regular": JosefinSans_400Regular,
+    "JosefinSans-Bold": JosefinSans_700Bold,
   });
 
-  const handleThemeChange = () => {
-    setGlobalTheme({
-      theme: globalTheme.isLight ? { ...dark } : { ...light },
-      isLight: !globalTheme.isLight,
-    });
-  };
-
+  if (!fontsLoaded) return <AppLoading />;
   return (
-    <View style={styles.container}>
-      <View style={styles.header}>
-        <Header globalTheme={globalTheme} onThemeChange={handleThemeChange} />
-        {/* Add New To-Do Item */}
-        <ListItem theme={globalTheme.theme} isAddNew={true} />
-      </View>
-      {/* List of To-Do Items */}
-      {/* <ListItems /> */}
-      {/* <View
+    <ThemeProvider>
+      <View style={styles.container}>
+        <View style={styles.header}>
+          <Header/>
+          {/* Add New To-Do Item */}
+          <ListItem isAddNew={true} />
+        </View>
+        {/* List of To-Do Items */}
+        {/* <ListItems /> */}
+        {/* <View
         style={{
           backgroundColor: "red",
           flex: .8,
@@ -38,7 +38,8 @@ const App: React.FC = (): JSX.Element => {
         }}
       >
       </View> */}
-    </View>
+      </View>
+    </ThemeProvider>
   );
 };
 

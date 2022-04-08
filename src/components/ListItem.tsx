@@ -1,21 +1,17 @@
 import { StyleSheet, Text, View } from "react-native";
 import { Theme, RadioButtonValueType } from "../utils";
 import React, { useState } from "react";
-import AppLoading from "expo-app-loading";
-import { useFonts, JosefinSans_400Regular } from "@expo-google-fonts/josefin-sans";
+import { useTheme } from "../store/globalTheme";
 import RadioButton from "./Buttons/RadioButton";
 
 interface Props {
-  theme: Theme;
   isActive?: boolean;
   isAddNew?: boolean;
 }
 
-const ListItem: React.FC<Props> = ({ theme, isActive = false, isAddNew = false }): JSX.Element => {
+const ListItem: React.FC<Props> = ({ isActive = false, isAddNew = false }): JSX.Element => {
   const [checked, setChecked] = useState<RadioButtonValueType>("checked");
-  let [fontsLoaded] = useFonts({
-    JosefinSans_400Regular,
-  });
+  const { theme } = useTheme();
 
   let textColor = theme.completedText;
   if (isAddNew) textColor = theme.createNewText;
@@ -25,7 +21,6 @@ const ListItem: React.FC<Props> = ({ theme, isActive = false, isAddNew = false }
     setChecked(checked == "checked" ? "unchecked" : "checked");
   };
 
-  if (!fontsLoaded) return <AppLoading />;
   return (
     <View style={[styles.itemContainer, { backgroundColor: textColor }]}>
       <RadioButton

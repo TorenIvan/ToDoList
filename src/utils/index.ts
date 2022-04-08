@@ -8,9 +8,12 @@ type globalThemeType = {
   theme: Theme;
 };
 
+declare function changeTheme(): void;
+type changeThemeType = typeof changeTheme;
+
 type RadioButtonValueType = "checked" | "unchecked";
 
-export { globalThemeType, Theme, RadioButtonValueType };
+export { globalThemeType, changeThemeType, changeTheme, Theme, RadioButtonValueType };
 
 /* Metrics */
 export { imageHeight } from "./constants/dimensions";

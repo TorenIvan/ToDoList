@@ -1,35 +1,23 @@
 import React from "react";
 import { StyleSheet, View, Text, ImageBackground, TouchableOpacity } from "react-native";
-import AppLoading from "expo-app-loading";
-import {
-  useFonts,
-  JosefinSans_400Regular,
-  JosefinSans_700Bold,
-} from "@expo-google-fonts/josefin-sans";
 import {
   lightMobileBackgroundImage,
   darkMobileBackgroundImage,
   SunIcon,
   MoonIcon,
 } from "../assets/index";
-import { globalThemeType } from "../utils";
 import { imageHeight } from "../utils";
+import { useChangeTheme, useTheme } from "../store/globalTheme";
 
-interface Props {
-  globalTheme: globalThemeType;
-  onThemeChange(): any;
-}
+const Header: React.FC = (): JSX.Element => {
+  const globalTheme = useTheme();
+  const onThemeChange = useChangeTheme();
 
-const Header: React.FC<Props> = ({ globalTheme, onThemeChange }): JSX.Element => {
-  let [fontsLoaded] = useFonts({
-    JosefinSans_400Regular,
-    JosefinSans_700Bold,
-  });
-
-  if (!fontsLoaded) return <AppLoading />;
   return (
     <ImageBackground
-      source={globalTheme.isLight ? lightMobileBackgroundImage : darkMobileBackgroundImage}
+      source={
+        globalTheme.isLight ? lightMobileBackgroundImage : darkMobileBackgroundImage
+      }
       style={styles.imageBackground}
       imageStyle={styles.imageStyle}
     >
@@ -40,7 +28,7 @@ const Header: React.FC<Props> = ({ globalTheme, onThemeChange }): JSX.Element =>
               styles.todo,
               {
                 color: globalTheme.theme.titleText,
-                fontFamily: "JosefinSans_700Bold",
+                fontFamily: "JosefinSans-Bold",
               },
             ]}
           >
