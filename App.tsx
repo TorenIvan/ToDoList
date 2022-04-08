@@ -23,7 +23,6 @@ const App: React.FC = (): JSX.Element => {
       <View style={styles.container}>
         <View style={styles.header}>
           <Header/>
-          {/* Add New To-Do Item */}
           <ListItem isAddNew={true} />
         </View>
         {/* List of To-Do Items */}

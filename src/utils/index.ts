@@ -1,5 +1,5 @@
-/* Types */
-import { dark, light } from "./constants/theme";
+/*** Types ***/
+import { dark, light, initialTheme } from "./constants/theme";
 
 type Theme = typeof light | typeof dark;
 
@@ -15,10 +15,10 @@ type RadioButtonValueType = "checked" | "unchecked";
 
 export { globalThemeType, changeThemeType, changeTheme, Theme, RadioButtonValueType };
 
-/* Metrics */
+/*** Metrics ***/
 export { imageHeight } from "./constants/dimensions";
 
-/* Themes */
+/*** Themes ***/
 const theme: Theme = { ...light };
 
-export { dark, light, theme };
+export { dark, light, theme, initialTheme };

@@ -28,3 +28,8 @@ export const light = {
   darkGrayishBlue: "hsl(236, 9%, 61%)",
   veryDarkGrayishBlue: "hsl(235, 19%, 35%)",
 };
+
+export const initialTheme = {
+  theme: light,
+  isLight: true,
+};

@@ -6,12 +6,10 @@ import {
   globalThemeType,
   changeThemeType,
   changeTheme,
+  initialTheme,
 } from "../utils";
 
-const ThemeContext = createContext<globalThemeType>({
-  theme: light,
-  isLight: true,
-});
+const ThemeContext = createContext<globalThemeType>(initialTheme);
 
 const ChangeThemeContext = createContext<changeThemeType>(changeTheme);
 
