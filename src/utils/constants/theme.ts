@@ -5,7 +5,7 @@ const primary = {
 export const dark = {
   ...primary,
   titleText: "hsl(236, 33%, 92%)",
-  createNewText: "hsl(234, 39%, 85%)",
+  createNewText: "hsl(233, 14%, 35%)",
   activeText: "hsl(234, 11%, 52%)",
   completedText: "hsl(233, 14%, 35%)",
   // veryDarkBlue: "hsl(235, 21%, 11%)",

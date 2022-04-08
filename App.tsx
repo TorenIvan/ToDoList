@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
   },
   header: {
     width: "100%",
-    height: imageHeight * 1,
+    height: imageHeight * 1.1,
     justifyContent: "center",
     alignItems: "center",
     zIndex: -1,
