@@ -1,4 +1,4 @@
-import React, { useState, createContext } from "react";
+import React from "react";
 import { StyleSheet, View } from "react-native";
 import Header from "./src/containers/Header";
 import ListItem from "./src/components/ListItem";
@@ -22,7 +22,7 @@ const App: React.FC = (): JSX.Element => {
     <ThemeProvider>
       <View style={styles.container}>
         <View style={styles.header}>
-          <Header/>
+          <Header />
           <ListItem isAddNew={true} />
         </View>
         {/* List of To-Do Items */}

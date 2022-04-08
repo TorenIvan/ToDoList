@@ -1,6 +1,6 @@
 const primary = {
   brightBlue: "hsl(220, 98%, 61%)",
-}
+};
 
 export const dark = {
   ...primary,
@@ -30,6 +30,6 @@ export const light = {
 };
 
 export const initialTheme = {
-  theme: light,
+  theme: { ...light },
   isLight: true,
 };
