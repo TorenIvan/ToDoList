@@ -10,13 +10,13 @@ import { imageHeight } from "../utils";
 import { useChangeTheme, useTheme } from "../store/globalTheme";
 
 const Header: React.FC = (): JSX.Element => {
-  const globalTheme = useTheme();
+  const { theme, isLight } = useTheme();
   const onThemeChange = useChangeTheme();
 
   return (
     <ImageBackground
       source={
-        globalTheme.isLight ? lightMobileBackgroundImage : darkMobileBackgroundImage
+        isLight ? lightMobileBackgroundImage : darkMobileBackgroundImage
       }
       style={styles.imageBackground}
       imageStyle={styles.imageStyle}
@@ -27,7 +27,7 @@ const Header: React.FC = (): JSX.Element => {
             style={[
               styles.todo,
               {
-                color: globalTheme.theme.titleText,
+                color: theme.titleText,
                 fontFamily: "JosefinSans-Bold",
               },
             ]}
@@ -35,7 +35,7 @@ const Header: React.FC = (): JSX.Element => {
             TODO
           </Text>
           <TouchableOpacity onPress={onThemeChange}>
-            {globalTheme.isLight ? <MoonIcon /> : <SunIcon />}
+            {isLight ? <MoonIcon /> : <SunIcon />}
           </TouchableOpacity>
         </View>
       </View>

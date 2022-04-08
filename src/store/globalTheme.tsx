@@ -1,6 +1,5 @@
 import { FC, useState, createContext, useContext } from "react";
 import {
-  theme,
   dark,
   light,
   globalThemeType,
@@ -14,10 +13,7 @@ const ThemeContext = createContext<globalThemeType>(initialTheme);
 const ChangeThemeContext = createContext<changeThemeType>(changeTheme);
 
 const ThemeProvider: FC = ({ children }): JSX.Element => {
-  const [globalTheme, setGlobalTheme] = useState<globalThemeType>({
-    theme: theme,
-    isLight: true,
-  });
+  const [globalTheme, setGlobalTheme] = useState<globalThemeType>(initialTheme);
 
   const changeTheme = () => {
     setGlobalTheme({
