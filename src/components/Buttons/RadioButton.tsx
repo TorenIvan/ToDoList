@@ -13,6 +13,7 @@ interface Props {
 const RadioButton: FC<Props> = (props): JSX.Element => {
   const { value, onRadioButtonPress, borderColor, checkedColor } = props;
   const handlePress = () => onRadioButtonPress();
+
   return (
     <Pressable
       style={

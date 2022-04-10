@@ -1,8 +1,9 @@
-import { StyleSheet, Text, TextInput, View } from "react-native";
+import { Pressable, StyleSheet, Text, TextInput, View } from "react-native";
 import { RadioButtonValueType } from "../utils";
 import React, { useState } from "react";
 import { useTheme } from "../store/globalTheme";
 import RadioButton from "../components/Buttons/RadioButton";
+import { CrossIcon } from "../assets";
 
 interface Props {
   isActive?: boolean;
@@ -23,6 +24,10 @@ const ListItem: React.FC<Props> = ({
 
   const handleRadioButtonPress = () => {
     setChecked(checked == "checked" ? "unchecked" : "checked");
+  };
+
+  const handleRemoveButtonPress = () => {
+    console.log("Gonna delete me are you sure?");
   };
 
   const handleTextChange = (text: String) => {
@@ -51,6 +56,13 @@ const ListItem: React.FC<Props> = ({
           {text}
         </TextInput>
       </View>
+      {!isAddNew && (
+        <View style={{ flex: 0.1, paddingLeft: "2.5%", }}>
+          <Pressable onPress={handleRemoveButtonPress}>
+            <CrossIcon />
+          </Pressable>
+        </View>
+      )}
     </View>
   );
 };
@@ -68,8 +80,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   radioButtonContainer: {
-    marginLeft: "5%",
-    marginRight: "5%",
+    marginHorizontal: "5%",
   },
   textInputContainer: {
     flex: 0.9,

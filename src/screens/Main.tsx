@@ -2,6 +2,7 @@ import { FC } from "react";
 import { StyleSheet, View } from "react-native";
 import Header from "../components/Header";
 import ListItem from "../containers/ListItem";
+import List from "../containers/List";
 import { imageHeight } from "../utils";
 
 const Main: FC = (): JSX.Element => {
@@ -12,7 +13,7 @@ const Main: FC = (): JSX.Element => {
         <ListItem isAddNew={true} />
       </View>
       {/* List of To-Do Items */}
-      {/* <ListItems /> */}
+      {/* <List /> */}
       {/* <View
         style={{
           backgroundColor: "red",
