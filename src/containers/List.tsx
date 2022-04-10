@@ -1,11 +1,11 @@
 import { FlatList, StyleSheet } from "react-native";
 import React from "react";
 
-const ListItems = ({}) => {
-  return <FlatList style={styles.flatList} data={items} renderItem={renderItem} />;
+const List = ({}) => {
+  // return <FlatList style={styles.flatList} renderItem={} />;
 };
 
-export default ListItems;
+export default List;
 
 const styles = StyleSheet.create({
   flatList: {

@@ -1,12 +1,12 @@
 import faviconIcon from "./icons/favicon.png";
 
-import CheckIcon from "./icons/checkIcon";
+import CheckIcon from "../components/Icons/checkIcon";
 
-import CrossIcon from "./icons/crossIcon";
+import CrossIcon from "../components/Icons/crossIcon";
 
-import MoonIcon from "./icons/moonIcon";
+import MoonIcon from "../components/Icons/moonIcon";
 
-import SunIcon from "./icons/sunIcon";
+import SunIcon from "../components/Icons/sunIcon";
 
 import darkDesktopBackgroundImage from "./images/bg-desktop-dark.jpg";
 

@@ -2,7 +2,7 @@ import { StyleSheet, Text, TextInput, View } from "react-native";
 import { RadioButtonValueType } from "../utils";
 import React, { useState } from "react";
 import { useTheme } from "../store/globalTheme";
-import RadioButton from "./Buttons/RadioButton";
+import RadioButton from "../components/Buttons/RadioButton";
 
 interface Props {
   isActive?: boolean;
