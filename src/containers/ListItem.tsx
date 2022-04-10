@@ -9,14 +9,17 @@ interface Props {
   isAddNew?: boolean;
 }
 
-const ListItem: React.FC<Props> = ({ isActive = false, isAddNew = false }): JSX.Element => {
-  const [checked, setChecked] = useState<RadioButtonValueType>("checked");
+const ListItem: React.FC<Props> = ({
+  isActive = false,
+  isAddNew = false,
+}): JSX.Element => {
+  const [checked, setChecked] = useState<RadioButtonValueType>("unchecked");
   const [text, setText] = useState<String>("");
   const { theme } = useTheme();
 
-  let textColor = theme.completedText;
-  if (isAddNew) textColor = theme.createNewText;
-  if (isActive) textColor = theme.activeText;
+  let textColor = theme.itemContainer;
+  if (isAddNew) textColor = theme.itemContainer;
+  if (isActive) textColor = theme.itemContainer;
 
   const handleRadioButtonPress = () => {
     setChecked(checked == "checked" ? "unchecked" : "checked");
@@ -28,23 +31,26 @@ const ListItem: React.FC<Props> = ({ isActive = false, isAddNew = false }): JSX.
 
   return (
     <View style={[styles.itemContainer, { backgroundColor: textColor }]}>
-      <View style={styles.divider} />
-      <RadioButton
-        value={checked}
-        onRadioButtonPress={handleRadioButtonPress}
-        checkedColor={theme.veryDarkGrayishBlue}
-        borderColor={theme.lightGrayishBlue}
-      />
-      <View style={styles.divider} />
-      <TextInput
-        style={{ color: "black" }}
-        editable
-        maxLength={30}
-        onChangeText={handleTextChange}
-        placeholder={"Create a new todo"}
-      >
-        {text}
-      </TextInput>
+      <View style={styles.radioButtonContainer}>
+        <RadioButton
+          value={checked}
+          onRadioButtonPress={handleRadioButtonPress}
+          checkedColor={theme.backgroundRadioButton}
+          borderColor={theme.borderRadioButton}
+        />
+      </View>
+      <View style={styles.textInputContainer}>
+        <TextInput
+          style={[styles.textInput, { color: theme.itemText }]}
+          editable
+          maxLength={35}
+          onChangeText={handleTextChange}
+          placeholder="Create a new todo"
+          placeholderTextColor={theme.itemNewText}
+        >
+          {text}
+        </TextInput>
+      </View>
     </View>
   );
 };
@@ -61,7 +67,15 @@ const styles = StyleSheet.create({
     justifyContent: "flex-start",
     alignItems: "center",
   },
-  divider: {
-    flex: 0.1,
+  radioButtonContainer: {
+    marginLeft: "5%",
+    marginRight: "5%",
+  },
+  textInputContainer: {
+    flex: 0.9,
+  },
+  textInput: {
+    fontFamily: "JosefinSans-Regular",
+    fontSize: 16,
   },
 });

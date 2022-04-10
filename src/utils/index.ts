@@ -1,17 +1,17 @@
-/*** Types ***/
 import { dark, light } from "./constants/theme";
+import { changeTheme, changeThemeType, RadioButtonValueType } from "./constants/types";
+import Strings from "./constants/strings";
 
+/*** Enums ***/
+export { Strings };
+
+/*** Types ***/
 type Theme = typeof light | typeof dark;
 
 type globalThemeType = {
   isLight: boolean;
   theme: Theme;
 };
-
-declare function changeTheme(): void;
-type changeThemeType = typeof changeTheme;
-
-type RadioButtonValueType = "checked" | "unchecked";
 
 export { globalThemeType, changeThemeType, changeTheme, Theme, RadioButtonValueType };
 
@@ -23,4 +23,5 @@ const initialTheme: globalThemeType = {
   theme: { ...light },
   isLight: true,
 };
+
 export { dark, light, initialTheme };

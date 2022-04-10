@@ -6,7 +6,7 @@ import {
   SunIcon,
   MoonIcon,
 } from "../assets/index";
-import { imageHeight } from "../utils";
+import { imageHeight, Strings } from "../utils";
 import { useChangeTheme, useTheme } from "../store/globalTheme";
 
 const Header: React.FC = (): JSX.Element => {
@@ -32,7 +32,7 @@ const Header: React.FC = (): JSX.Element => {
               },
             ]}
           >
-            TODO
+            {Strings.TODO}
           </Text>
           <TouchableOpacity onPress={onThemeChange}>
             {isLight ? <MoonIcon /> : <SunIcon />}
