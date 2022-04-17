@@ -1,5 +1,5 @@
 import { Pressable, StyleSheet, Text, View } from "react-native";
-import { RadioButtonValueType, item } from "../utils";
+import { RadioButtonValueType, item, itemHeight } from "../utils";
 import React, { useState } from "react";
 import { useTheme } from "../store/globalTheme";
 import RadioButton from "../components/Buttons/RadioButton";
@@ -31,7 +31,7 @@ const ListItem: React.FC<Props> = ({ item: { isActive, text } }): JSX.Element =>
   let textColor = theme.itemContainer;
   if (checked == "checked") textColor = theme.itemContainer;
   return (
-    <View style={[styles.itemContainer, { backgroundColor: textColor }]}>
+    <View style={[styles.itemContainer, { backgroundColor: "grey" }]}>
       <View style={styles.radioButtonContainer}>
         <RadioButton
           value={checked}
@@ -40,8 +40,8 @@ const ListItem: React.FC<Props> = ({ item: { isActive, text } }): JSX.Element =>
           borderColor={theme.borderRadioButton}
         />
       </View>
-      <View style={styles.textInputContainer}>
-        <Text style={[styles.textInput, { color: theme.itemText }]}>
+      <View style={styles.textContainer}>
+        <Text style={[styles.text, { color: textColor }]}>
           {text}
         </Text>
       </View>
@@ -58,9 +58,9 @@ export default ListItem;
 
 const styles = StyleSheet.create({
   itemContainer: {
-    height: "25%",
-    width: "85%",
-    marginTop: "16%",
+    width: "100%",
+    height: itemHeight,
+    marginBottom: "8%",
     borderRadius: 5,
     flexDirection: "row",
     justifyContent: "flex-start",
@@ -69,10 +69,12 @@ const styles = StyleSheet.create({
   radioButtonContainer: {
     marginHorizontal: "5%",
   },
-  textInputContainer: {
+  textContainer: {
     flex: 0.9,
+    justifyContent: "center",
+    // height: "100%",
   },
-  textInput: {
+  text: {
     fontFamily: "JosefinSans-Regular",
     fontSize: 16,
   },

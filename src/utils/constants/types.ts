@@ -7,6 +7,6 @@ type item = {
   isActive: boolean;
   text: String;
 };
-type list = Array<item> | null;
+type list = Array<item> | [];
 
 export { changeTheme, changeThemeType, RadioButtonValueType, item, list };

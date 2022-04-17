@@ -16,7 +16,7 @@ type globalThemeType = {
 export { globalThemeType, changeThemeType, changeTheme, Theme, RadioButtonValueType, item, list };
 
 /*** Metrics ***/
-export { imageHeight } from "./constants/dimensions";
+export { imageHeight, itemHeight } from "./constants/dimensions";
 
 /*** Themes ***/
 const initialTheme: globalThemeType = {

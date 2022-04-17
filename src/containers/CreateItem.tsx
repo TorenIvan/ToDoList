@@ -1,5 +1,5 @@
 import { StyleSheet, TextInput, View } from "react-native";
-import { RadioButtonValueType } from "../utils";
+import { RadioButtonValueType, itemHeight } from "../utils";
 import React, { useState } from "react";
 import { useTheme } from "../store/globalTheme";
 import RadioButton from "../components/Buttons/RadioButton";
@@ -25,6 +25,7 @@ const CreateItem: React.FC<Props> = ({ onSubmit }): JSX.Element => {
     if (text.trim().length > 0) {
       const isActive: boolean = checked == "unchecked";
       onSubmit({ isActive, text });
+      setText("");
     }
   };
 
@@ -62,7 +63,7 @@ export default CreateItem;
 
 const styles = StyleSheet.create({
   itemContainer: {
-    height: "25%",
+    height: itemHeight,
     width: "85%",
     marginTop: "16%",
     borderRadius: 5,
