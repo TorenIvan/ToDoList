@@ -1,5 +1,5 @@
 import { StyleSheet, Text, View, Pressable } from "react-native";
-import { FC } from "react";
+import { FC, memo } from "react";
 import { RadioButtonValueType } from "../../utils";
 import { CheckIcon } from "../../assets";
 
@@ -28,7 +28,7 @@ const RadioButton: FC<Props> = (props): JSX.Element => {
   );
 };
 
-export default RadioButton;
+export default memo(RadioButton);
 
 const styles = StyleSheet.create({
   circle: {

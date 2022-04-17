@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import { StyleSheet, View, Text, ImageBackground, TouchableOpacity } from "react-native";
 import {
   lightMobileBackgroundImage,
@@ -43,7 +43,7 @@ const Header: React.FC = (): JSX.Element => {
   );
 };
 
-export default Header;
+export default memo(Header);
 
 const styles = StyleSheet.create({
   imageBackground: {

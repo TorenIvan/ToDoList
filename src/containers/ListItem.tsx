@@ -1,26 +1,24 @@
-import { Pressable, StyleSheet, Text, TextInput, View } from "react-native";
-import { RadioButtonValueType } from "../utils";
+import { Pressable, StyleSheet, Text, View } from "react-native";
+import { RadioButtonValueType, item } from "../utils";
 import React, { useState } from "react";
 import { useTheme } from "../store/globalTheme";
 import RadioButton from "../components/Buttons/RadioButton";
 import { CrossIcon } from "../assets";
 
 interface Props {
-  isActive?: boolean;
-  isAddNew?: boolean;
+  item: item;
 }
 
-const ListItem: React.FC<Props> = ({
-  isActive = false,
-  isAddNew = false,
-}): JSX.Element => {
-  const [checked, setChecked] = useState<RadioButtonValueType>("unchecked");
-  const [text, setText] = useState<String>("");
-  const { theme } = useTheme();
+/***
+  Using keyExtractor and unique key, the components re-mounts and as a result
+  Derived State is handled using ListItem as fully uncontrolled component
+***/
 
-  let textColor = theme.itemContainer;
-  if (isAddNew) textColor = theme.itemContainer;
-  if (isActive) textColor = theme.itemContainer;
+const ListItem: React.FC<Props> = ({ item: { isActive, text } }): JSX.Element => {
+  const [checked, setChecked] = useState<RadioButtonValueType>(
+    isActive ? "unchecked" : "checked"
+  );
+  const { theme } = useTheme();
 
   const handleRadioButtonPress = () => {
     setChecked(checked == "checked" ? "unchecked" : "checked");
@@ -30,10 +28,8 @@ const ListItem: React.FC<Props> = ({
     console.log("Gonna delete me are you sure?");
   };
 
-  const handleTextChange = (text: String) => {
-    setText(text);
-  };
-
+  let textColor = theme.itemContainer;
+  if (checked == "checked") textColor = theme.itemContainer;
   return (
     <View style={[styles.itemContainer, { backgroundColor: textColor }]}>
       <View style={styles.radioButtonContainer}>
@@ -45,24 +41,15 @@ const ListItem: React.FC<Props> = ({
         />
       </View>
       <View style={styles.textInputContainer}>
-        <TextInput
-          style={[styles.textInput, { color: theme.itemText }]}
-          editable
-          maxLength={35}
-          onChangeText={handleTextChange}
-          placeholder="Create a new todo"
-          placeholderTextColor={theme.itemNewText}
-        >
+        <Text style={[styles.textInput, { color: theme.itemText }]}>
           {text}
-        </TextInput>
+        </Text>
       </View>
-      {!isAddNew && (
-        <View style={{ flex: 0.1, paddingLeft: "2.5%", }}>
-          <Pressable onPress={handleRemoveButtonPress}>
-            <CrossIcon />
-          </Pressable>
-        </View>
-      )}
+      <View style={styles.deleteContainer}>
+        <Pressable onPress={handleRemoveButtonPress}>
+          <CrossIcon />
+        </Pressable>
+      </View>
     </View>
   );
 };
@@ -88,5 +75,9 @@ const styles = StyleSheet.create({
   textInput: {
     fontFamily: "JosefinSans-Regular",
     fontSize: 16,
+  },
+  deleteContainer: {
+    flex: 0.1,
+    paddingLeft: "2.5%",
   },
 });

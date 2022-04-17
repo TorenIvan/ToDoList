@@ -3,4 +3,10 @@ type changeThemeType = typeof changeTheme;
 
 type RadioButtonValueType = "checked" | "unchecked";
 
-export { changeTheme, changeThemeType, RadioButtonValueType };
+type item = {
+  isActive: boolean;
+  text: String;
+};
+type list = Array<item> | null;
+
+export { changeTheme, changeThemeType, RadioButtonValueType, item, list };

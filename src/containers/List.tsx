@@ -1,18 +1,23 @@
-import { FlatList, StyleSheet } from "react-native";
-import React from "react";
+// import { FlatList, StyleSheet } from "react-native";
+// import React, { useState } from "react";
+// import ListItem from "./ListItem";
 
-const List = ({}) => {
-  // return <FlatList style={styles.flatList} renderItem={} />;
-};
+// const List = ({ items }) => {
+//   const renderItem = ({ item }) => {
+//     <ListItem item={item} />;
+//   };
 
-export default List;
+//   return <FlatList data={items} style={styles.flatList} renderItem={renderItem} />;
+// };
 
-const styles = StyleSheet.create({
-  flatList: {
-    backgroundColor: "red",
-    flex: 0.8,
-    width: "80%",
-    marginTop: "-10%",
-    alignSelf: "center",
-  },
-});
+// export default List;
+
+// const styles = StyleSheet.create({
+//   flatList: {
+//     backgroundColor: "red",
+//     flex: 0.8,
+//     width: "80%",
+//     marginTop: "-10%",
+//     alignSelf: "center",
+//   },
+// });
