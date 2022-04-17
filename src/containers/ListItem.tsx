@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
   itemContainer: {
     width: "100%",
     height: itemHeight,
-    marginBottom: "8%",
+    marginBottom: "7.5%",
     borderRadius: 5,
     flexDirection: "row",
     justifyContent: "flex-start",

@@ -1,6 +1,6 @@
 import { FC, useState } from "react";
 import { FlatList, StyleSheet, View } from "react-native";
-import Header from "../components/Header";
+import Header from "../containers/Header";
 import CreateItem from "../containers/CreateItem";
 import ListItem from "../containers/ListItem";
 import { imageHeight, item, list } from "../utils";
@@ -52,6 +52,6 @@ const styles = StyleSheet.create({
     flex: 0.8,
     width: "85%",
     alignSelf: "center",
-    marginTop: "-8%",
+    marginTop: "-7.5%",
   },
 });
