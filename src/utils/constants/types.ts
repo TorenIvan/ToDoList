@@ -4,7 +4,7 @@ type changeThemeType = typeof changeTheme;
 type RadioButtonValueType = "checked" | "unchecked";
 
 type item = {
-  isActive: boolean;
+  checked: RadioButtonValueType;
   text: String;
 };
 type list = Array<item> | [];

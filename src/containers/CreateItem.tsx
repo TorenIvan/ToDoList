@@ -5,13 +5,13 @@ import { useTheme } from "../store/globalTheme";
 import RadioButton from "../components/Buttons/RadioButton";
 
 interface Props {
-  onSubmit: ({ isActive, text }: { isActive: boolean; text: String }) => void;
-};
+  onSubmit: ({ checked, text }: { checked: RadioButtonValueType; text: String }) => void;
+}
 
 const CreateItem: React.FC<Props> = ({ onSubmit }): JSX.Element => {
   const [checked, setChecked] = useState<RadioButtonValueType>("unchecked");
   const [text, setText] = useState<String>("");
-  const { theme } = useTheme();
+  const { theme } = useTheme();  
 
   const handleRadioButtonPress = () => {
     setChecked(checked == "checked" ? "unchecked" : "checked");
@@ -23,12 +23,14 @@ const CreateItem: React.FC<Props> = ({ onSubmit }): JSX.Element => {
 
   const submitItem = () => {
     if (text.trim().length > 0) {
-      const isActive: boolean = checked == "unchecked";
-      onSubmit({ isActive, text });
+      onSubmit({ checked, text });
       setText("");
+      setChecked("unchecked");
     }
   };
 
+  let textColor = theme.itemText;
+  if (checked == "checked") textColor = "#B6B5BB";
   return (
     <View style={[styles.itemContainer, { backgroundColor: theme.itemContainer }]}>
       <View style={styles.radioButtonContainer}>
@@ -41,7 +43,11 @@ const CreateItem: React.FC<Props> = ({ onSubmit }): JSX.Element => {
       </View>
       <View style={styles.textInputContainer}>
         <TextInput
-          style={[styles.textInput, { color: theme.itemText }]}
+          style={
+            checked == "checked"
+              ? [styles.textInput, styles.linethrough, { color: textColor }]
+              : [styles.textInput, { color: theme.itemText }]
+          }
           editable
           maxLength={35}
           multiline={false}
@@ -80,5 +86,8 @@ const styles = StyleSheet.create({
   textInput: {
     fontFamily: "JosefinSans-Regular",
     fontSize: 16,
+  },
+  linethrough: {
+    textDecorationLine: "line-through",
   },
 });
