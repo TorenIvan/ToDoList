@@ -1,6 +1,6 @@
 import { Pressable, StyleSheet, Text, View } from "react-native";
 import { item, itemHeight, RadioButtonValueType } from "../utils";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, memo } from "react";
 import { useTheme } from "../store/globalTheme";
 import RadioButton from "../components/Buttons/RadioButton";
 import { CrossIcon } from "../assets";
@@ -8,6 +8,7 @@ import { CrossIcon } from "../assets";
 interface Props {
   item: item;
   onDeleteItem: () => void;
+  onCheckButtonPress: (text: String) => void;
 }
 
 /***
@@ -16,21 +17,20 @@ interface Props {
     * Initial State related based on prop `checked`
 ***/
 
-const ListItem: React.FC<Props> = ({ item: { checked, text }, onDeleteItem }): JSX.Element => {
+const ListItem: React.FC<Props> = ({ item: { checked, text }, onDeleteItem, onCheckButtonPress }): JSX.Element => {
   const { theme } = useTheme();
-  const [itemChecked, setItemChecked] = useState<RadioButtonValueType>(checked);
 
   const handleButtonPressed = () => {
-    setItemChecked(itemChecked == "checked" ? "unchecked" : "checked");
-  };
+    onCheckButtonPress(text.toString());
+  }
 
   let textColor = "#717287";
-  if (itemChecked == "checked") textColor = "#B6B5BB";
+  if (checked == "checked") textColor = "#B6B5BB";
   return (
     <View style={[styles.itemContainer, { backgroundColor: "#FFFFFF" }]}>
       <View style={styles.radioButtonContainer}>
         <RadioButton
-          value={itemChecked}
+          value={checked}
           onRadioButtonPress={handleButtonPressed}
           checkedColor={theme.backgroundRadioButton}
           borderColor={theme.borderRadioButton}
@@ -39,7 +39,7 @@ const ListItem: React.FC<Props> = ({ item: { checked, text }, onDeleteItem }): J
       <View style={styles.textContainer}>
         <Text
           style={
-            itemChecked == "checked"
+            checked == "checked"
               ? [styles.text, { color: textColor }, styles.linethrough]
               : [styles.text, { color: textColor }]
           }
@@ -56,7 +56,7 @@ const ListItem: React.FC<Props> = ({ item: { checked, text }, onDeleteItem }): J
   );
 };
 
-export default ListItem;
+export default memo(ListItem);
 
 const styles = StyleSheet.create({
   itemContainer: {

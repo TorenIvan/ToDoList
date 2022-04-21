@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { FC, useState, useMemo, useCallback, useRef } from "react";
 import { FlatList, StyleSheet, View } from "react-native";
 import Header from "../containers/Header";
 import CreateItem from "../containers/CreateItem";
@@ -20,8 +20,16 @@ const Main: FC = (): JSX.Element => {
     console.log("Gonna delete me are you sure?");
   };
 
+  const handleCheckButtonPress = (itemKey: String) => {
+    const newItems = [...items];
+    const index = newItems.findIndex(item => item.text == itemKey);
+    const checked = newItems[index].checked == "checked" ? "unchecked" : "checked";
+    newItems[index] = Object.assign(newItems[index], { checked: checked});
+    setItems(newItems);
+  }
+
   const renderItem = ({ item }: { item: item }) => {
-    return <ListItem item={item} onDeleteItem={handleDeleteItem} />;
+    return <ListItem item={item} onDeleteItem={handleDeleteItem} onCheckButtonPress={handleCheckButtonPress} />;
   };
 
   return (
@@ -30,12 +38,14 @@ const Main: FC = (): JSX.Element => {
         <Header />
         <CreateItem onSubmit={handleItemSubmit} />
       </View>
-      <FlatList
-        style={styles.flatList}
-        data={items}
-        renderItem={renderItem}
-        keyExtractor={item => String(item.text)}
-      />
+      {items && (
+        <FlatList
+          style={styles.flatList}
+          data={items}
+          renderItem={renderItem}
+          keyExtractor={item => String(item.text)}
+        />
+      )}
     </View>
   );
 };
