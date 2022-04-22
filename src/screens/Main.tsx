@@ -1,29 +1,17 @@
-import { FC, useState, useMemo, useCallback, useRef } from "react";
-import { FlatList, StyleSheet, View } from "react-native";
+import { FC, useState } from "react";
+import { FlatList, StyleSheet, View, TouchableWithoutFeedback } from "react-native";
 import Header from "../containers/Header";
 import CreateItem from "../containers/CreateItem";
 import ListItem from "../containers/ListItem";
 import { imageHeight, item, list } from "../utils";
 import ModalAlert from "../components/ModalAlert";
 
+let itemText = "";
+
 const Main: FC = (): JSX.Element => {
   const [items, setItems] = useState<list>([]);
   const [visibleActionModal, setVisibleActionModal] = useState<boolean>(false);
   const [visibleErrorModal, setVisibleErrorModal] = useState<boolean>(false);
-
-  const handleItemSubmit = (item: item) => {
-    if (items.some(element => element.text == item.text)) {
-      console.warn("Item already exists"); //Convert to pop-up modal/alert
-      changeVisibleErrorModal();
-      return;
-    }
-    setItems(currentItems => [item, ...currentItems]);
-  };
-
-  const handleDeleteItem = () => {
-    console.log("Gonna delete me are you sure?");
-    changeVisibleActionModal();
-  };
 
   const changeVisibleActionModal = () => {
     setVisibleActionModal(!visibleActionModal);
@@ -33,12 +21,31 @@ const Main: FC = (): JSX.Element => {
     setVisibleErrorModal(!visibleErrorModal);
   };
 
+  const handleDeleteItem = (itemKey: String) => {
+    itemText = itemKey.toString();
+    changeVisibleActionModal();
+  };
+
+  const deleteItem = (itemKey: String) => {
+    const newItems = items.slice().filter(item => item.text != itemKey);
+    setItems(newItems);
+  }
+
   const handleCheckButtonPress = (itemKey: String) => {
     const newItems = [...items];
     const index = newItems.findIndex(item => item.text == itemKey);
     const checked = newItems[index].checked == "checked" ? "unchecked" : "checked";
     newItems[index] = Object.assign(newItems[index], { checked: checked });
     setItems(newItems);
+  };
+
+  const handleItemSubmit = (item: item) => {
+    if (items.some(element => element.text == item.text)) {
+      itemText = item.text.toString();
+      changeVisibleErrorModal();
+      return;
+    }
+    setItems(currentItems => [item, ...currentItems]);
   };
 
   const renderItem = ({ item }: { item: item }) => {
@@ -61,8 +68,18 @@ const Main: FC = (): JSX.Element => {
         <ModalAlert
           isVisible={visibleActionModal}
           onChangeVisible={changeVisibleActionModal}
-          text={"Gonna delete me are you sure?"}
+          onDeleteItem={deleteItem}
+          itemText={itemText}
           type={"action"}
+        />
+      )}
+      {visibleErrorModal && (
+        <ModalAlert
+          isVisible={visibleErrorModal}
+          onChangeVisible={changeVisibleErrorModal}
+          onDeleteItem={deleteItem}
+          itemText={itemText}
+          type={"error"}
         />
       )}
       <FlatList

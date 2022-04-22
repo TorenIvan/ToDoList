@@ -10,7 +10,7 @@ interface Props {
 
 const CreateItem: React.FC<Props> = ({ onSubmit }): JSX.Element => {
   const [checked, setChecked] = useState<RadioButtonValueType>("unchecked");
-  const [text, setText] = useState<String>("");
+  const [newText, setNewText] = useState<String>("");
   const { theme } = useTheme();  
 
   const handleRadioButtonPress = () => {
@@ -18,13 +18,14 @@ const CreateItem: React.FC<Props> = ({ onSubmit }): JSX.Element => {
   };
 
   const handleTextChange = (text: String) => {
-    setText(text);
+    setNewText(text);
   };
 
   const submitItem = () => {
-    if (text.trim().length > 0) {
+    const text = newText.trim();
+    if (text.length > 0) {
       onSubmit({ checked, text });
-      setText("");
+      setNewText("");
       setChecked("unchecked");
     }
   };
@@ -58,7 +59,7 @@ const CreateItem: React.FC<Props> = ({ onSubmit }): JSX.Element => {
           returnKeyLabel="done"
           onSubmitEditing={submitItem}
         >
-          {text}
+          {newText}
         </TextInput>
       </View>
     </View>

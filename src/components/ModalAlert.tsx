@@ -1,20 +1,42 @@
-import { Alert, Modal, StyleSheet, Text, Pressable, View } from "react-native";
+import {
+  Alert,
+  Modal,
+  StyleSheet,
+  Text,
+  Pressable,
+  View,
+  TouchableWithoutFeedback,
+} from "react-native";
 import React, { useState, FC } from "react";
 import { PopUpAlert } from "../utils";
 
 interface Props {
   isVisible: boolean;
   onChangeVisible(): void;
-  text: String;
+  onDeleteItem(itemKey: String): void;
+  itemText: String;
   type: PopUpAlert;
 }
 
 const ModalAlert: FC<Props> = ({
   isVisible,
   onChangeVisible,
-  text,
+  onDeleteItem,
+  itemText,
   type,
 }): JSX.Element => {
+  let text = `ToDo item with text "${itemText}" already exists.\nPlease, try again!`;
+  if (type == "action") text = `Are you sure you want to delete the item with text "${itemText}" ?`
+
+  const closeOnPressingOutside = () => {
+    if (type == "error") onChangeVisible();
+  };
+
+  const handleConfirm = () => {
+    onChangeVisible();
+    onDeleteItem(itemText);
+  }
+
   return (
     <View style={styles.modalContainer}>
       <Modal
@@ -22,31 +44,32 @@ const ModalAlert: FC<Props> = ({
         transparent={true}
         visible={isVisible}
         onRequestClose={() => {
-          Alert.alert("Modal has been closed.");
           onChangeVisible();
         }}
       >
-        <View style={styles.centeredView}>
-          <View style={styles.modalView}>
-            <Text style={styles.modalText}>{text}</Text>
-            <View style={styles.buttonContainer}>
-              {type == "action" && (
+        <TouchableWithoutFeedback onPress={closeOnPressingOutside}>
+          <View style={styles.centeredView}>
+            <View style={styles.modalView}>
+              <Text style={styles.modalText}>{text}</Text>
+              <View style={styles.buttonContainer}>
+                {type == "action" && (
+                  <Pressable
+                    style={[styles.button, styles.buttonClose]}
+                    onPress={handleConfirm}
+                  >
+                    <Text style={styles.textStyle}>Yes</Text>
+                  </Pressable>
+                )}
                 <Pressable
                   style={[styles.button, styles.buttonClose]}
                   onPress={onChangeVisible}
                 >
-                  <Text style={styles.textStyle}>Yes</Text>
+                  <Text style={[styles.textStyle, styles.extraButtonPadding]}>{type == "error" ? "OK" : "NO"}</Text>
                 </Pressable>
-              )}
-              <Pressable
-                style={[styles.button, styles.buttonClose]}
-                onPress={onChangeVisible}
-              >
-                <Text style={styles.textStyle}> NO </Text>
-              </Pressable>
+              </View>
             </View>
           </View>
-        </View>
+        </TouchableWithoutFeedback>
       </Modal>
     </View>
   );
@@ -102,6 +125,9 @@ const styles = StyleSheet.create({
     color: "white",
     fontWeight: "bold",
     textAlign: "center",
+  },
+  extraButtonPadding: {
+    paddingHorizontal: 5,
   },
   modalText: {
     marginBottom: 15,

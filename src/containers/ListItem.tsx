@@ -7,7 +7,7 @@ import { CrossIcon } from "../assets";
 
 interface Props {
   item: item;
-  onDeleteItem: () => void;
+  onDeleteItem: (text: String) => void;
   onCheckButtonPress: (text: String) => void;
 }
 
@@ -22,6 +22,10 @@ const ListItem: React.FC<Props> = ({ item: { checked, text }, onDeleteItem, onCh
 
   const handleButtonPressed = () => {
     onCheckButtonPress(text.toString());
+  }
+
+  const handleDeleteItem = () => {
+    onDeleteItem(text.toString());
   }
 
   let textColor = "#717287";
@@ -48,7 +52,7 @@ const ListItem: React.FC<Props> = ({ item: { checked, text }, onDeleteItem, onCh
         </Text>
       </View>
       <View style={styles.deleteContainer}>
-        <Pressable onPress={onDeleteItem}>
+        <Pressable onPress={handleDeleteItem}>
           <CrossIcon />
         </Pressable>
       </View>
