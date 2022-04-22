@@ -4,13 +4,17 @@ import Header from "../containers/Header";
 import CreateItem from "../containers/CreateItem";
 import ListItem from "../containers/ListItem";
 import { imageHeight, item, list } from "../utils";
+import ModalAlert from "../components/ModalAlert";
 
 const Main: FC = (): JSX.Element => {
   const [items, setItems] = useState<list>([]);
+  const [visibleActionModal, setVisibleActionModal] = useState<boolean>(false);
+  const [visibleErrorModal, setVisibleErrorModal] = useState<boolean>(false);
 
   const handleItemSubmit = (item: item) => {
     if (items.some(element => element.text == item.text)) {
       console.warn("Item already exists"); //Convert to pop-up modal/alert
+      changeVisibleErrorModal();
       return;
     }
     setItems(currentItems => [item, ...currentItems]);
@@ -18,18 +22,33 @@ const Main: FC = (): JSX.Element => {
 
   const handleDeleteItem = () => {
     console.log("Gonna delete me are you sure?");
+    changeVisibleActionModal();
+  };
+
+  const changeVisibleActionModal = () => {
+    setVisibleActionModal(!visibleActionModal);
+  };
+
+  const changeVisibleErrorModal = () => {
+    setVisibleErrorModal(!visibleErrorModal);
   };
 
   const handleCheckButtonPress = (itemKey: String) => {
     const newItems = [...items];
     const index = newItems.findIndex(item => item.text == itemKey);
     const checked = newItems[index].checked == "checked" ? "unchecked" : "checked";
-    newItems[index] = Object.assign(newItems[index], { checked: checked});
+    newItems[index] = Object.assign(newItems[index], { checked: checked });
     setItems(newItems);
-  }
+  };
 
   const renderItem = ({ item }: { item: item }) => {
-    return <ListItem item={item} onDeleteItem={handleDeleteItem} onCheckButtonPress={handleCheckButtonPress} />;
+    return (
+      <ListItem
+        item={item}
+        onDeleteItem={handleDeleteItem}
+        onCheckButtonPress={handleCheckButtonPress}
+      />
+    );
   };
 
   return (
@@ -38,14 +57,20 @@ const Main: FC = (): JSX.Element => {
         <Header />
         <CreateItem onSubmit={handleItemSubmit} />
       </View>
-      {items && (
-        <FlatList
-          style={styles.flatList}
-          data={items}
-          renderItem={renderItem}
-          keyExtractor={item => String(item.text)}
+      {visibleActionModal && (
+        <ModalAlert
+          isVisible={visibleActionModal}
+          onChangeVisible={changeVisibleActionModal}
+          text={"Gonna delete me are you sure?"}
+          type={"action"}
         />
       )}
+      <FlatList
+        style={styles.flatList}
+        data={items}
+        renderItem={renderItem}
+        keyExtractor={item => String(item.text)}
+      />
     </View>
   );
 };
