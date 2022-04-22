@@ -1,5 +1,4 @@
 import {
-  Alert,
   Modal,
   StyleSheet,
   Text,
@@ -7,7 +6,7 @@ import {
   View,
   TouchableWithoutFeedback,
 } from "react-native";
-import React, { useState, FC } from "react";
+import { FC } from "react";
 import { PopUpAlert } from "../utils";
 
 interface Props {
@@ -18,15 +17,12 @@ interface Props {
   type: PopUpAlert;
 }
 
-const ModalAlert: FC<Props> = ({
-  isVisible,
-  onChangeVisible,
-  onDeleteItem,
-  itemText,
-  type,
-}): JSX.Element => {
+const ModalAlert: FC<Props> = (props): JSX.Element => {
+  const { isVisible, onChangeVisible, onDeleteItem, itemText, type } = props;
+
   let text = `ToDo item with text "${itemText}" already exists.\nPlease, try again!`;
-  if (type == "action") text = `Are you sure you want to delete the item with text "${itemText}" ?`
+  if (type == "action")
+    text = `Are you sure you want to delete the item with text "${itemText}" ?`;
 
   const closeOnPressingOutside = () => {
     if (type == "error") onChangeVisible();
@@ -35,7 +31,7 @@ const ModalAlert: FC<Props> = ({
   const handleConfirm = () => {
     onChangeVisible();
     onDeleteItem(itemText);
-  }
+  };
 
   return (
     <View style={styles.modalContainer}>
@@ -64,7 +60,9 @@ const ModalAlert: FC<Props> = ({
                   style={[styles.button, styles.buttonClose]}
                   onPress={onChangeVisible}
                 >
-                  <Text style={[styles.textStyle, styles.extraButtonPadding]}>{type == "error" ? "OK" : "NO"}</Text>
+                  <Text style={[styles.textStyle, styles.extraButtonPadding]}>
+                    {type == "error" ? "OK" : "NO"}
+                  </Text>
                 </Pressable>
               </View>
             </View>

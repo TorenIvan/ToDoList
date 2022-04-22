@@ -1,6 +1,6 @@
 import { Pressable, StyleSheet, Text, View } from "react-native";
-import { item, itemHeight, RadioButtonValueType } from "../utils";
-import React, { useState, useEffect, memo } from "react";
+import { item, itemHeight } from "../utils";
+import React, { memo } from "react";
 import { useTheme } from "../store/globalTheme";
 import RadioButton from "../components/Buttons/RadioButton";
 import { CrossIcon } from "../assets";
@@ -10,12 +10,6 @@ interface Props {
   onDeleteItem: (text: String) => void;
   onCheckButtonPress: (text: String) => void;
 }
-
-/***
-  Derived State is handled using 
-    * Unique key(text) to re-mount the list item
-    * Initial State related based on prop `checked`
-***/
 
 const ListItem: React.FC<Props> = ({ item: { checked, text }, onDeleteItem, onCheckButtonPress }): JSX.Element => {
   const { theme } = useTheme();
