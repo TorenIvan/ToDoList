@@ -1,5 +1,5 @@
 import { FC, useState } from "react";
-import { FlatList, StyleSheet, View, TouchableWithoutFeedback } from "react-native";
+import { FlatList, StyleSheet, View } from "react-native";
 import Header from "../containers/Header";
 import CreateItem from "../containers/CreateItem";
 import ListItem from "../containers/ListItem";
@@ -21,21 +21,21 @@ const Main: FC = (): JSX.Element => {
     setVisibleErrorModal(!visibleErrorModal);
   };
 
-  const handleDeleteItem = (itemKey: String) => {
+  const handleDeleteItemAttempt = (itemKey: String) => {
     itemText = itemKey.toString();
     changeVisibleActionModal();
   };
 
   const deleteItem = (itemKey: String) => {
-    const newItems = items.slice().filter(item => item.text != itemKey);
+    const newItems = [...items].filter(item => item.text != itemKey);
     setItems(newItems);
-  }
+  };
 
   const handleCheckButtonPress = (itemKey: String) => {
     const newItems = [...items];
     const index = newItems.findIndex(item => item.text == itemKey);
     const checked = newItems[index].checked == "checked" ? "unchecked" : "checked";
-    newItems[index] = Object.assign(newItems[index], { checked: checked });
+    newItems[index] = { ...newItems[index], checked: checked };
     setItems(newItems);
   };
 
@@ -52,7 +52,7 @@ const Main: FC = (): JSX.Element => {
     return (
       <ListItem
         item={item}
-        onDeleteItem={handleDeleteItem}
+        onDeleteItem={handleDeleteItemAttempt}
         onCheckButtonPress={handleCheckButtonPress}
       />
     );
