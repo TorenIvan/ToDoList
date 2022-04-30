@@ -1,12 +1,12 @@
 import { Pressable, StyleSheet, Text, View } from "react-native";
-import { item, itemHeight } from "../utils";
+import { Item, itemHeight } from "../utils";
 import React, { memo } from "react";
 import { useTheme } from "../store/globalTheme";
 import RadioButton from "../components/Buttons/RadioButton";
 import { CrossIcon } from "../assets";
 
 interface Props {
-  item: item;
+  item: Item;
   onDeleteItem: (text: String) => void;
   onCheckButtonPress: (text: String) => void;
 }
@@ -16,16 +16,19 @@ const ListItem: React.FC<Props> = ({ item: { checked, text }, onDeleteItem, onCh
 
   const handleButtonPressed = () => {
     onCheckButtonPress(text.toString());
-  }
+  };
 
   const handleDeleteItem = () => {
     onDeleteItem(text.toString());
-  }
+  };
 
-  let textColor = "#717287";
-  if (checked == "checked") textColor = "#B6B5BB";
   return (
-    <View style={[styles.itemContainer, { backgroundColor: "#FFFFFF" }]}>
+    <View
+      style={[
+        styles.itemContainer,
+        { backgroundColor: theme.itemContainer, borderColor: theme.itemBorder },
+      ]}
+    >
       <View style={styles.radioButtonContainer}>
         <RadioButton
           value={checked}
@@ -38,8 +41,8 @@ const ListItem: React.FC<Props> = ({ item: { checked, text }, onDeleteItem, onCh
         <Text
           style={
             checked == "checked"
-              ? [styles.text, { color: textColor }, styles.linethrough]
-              : [styles.text, { color: textColor }]
+              ? [styles.text, { color: theme.itemTextChecked }, styles.linethrough]
+              : [styles.text, { color: theme.itemText }]
           }
         >
           {text}
@@ -64,7 +67,6 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "flex-start",
     alignItems: "center",
-    borderColor: "#E6E5EB",
     borderWidth: 1,
   },
   radioButtonContainer: {

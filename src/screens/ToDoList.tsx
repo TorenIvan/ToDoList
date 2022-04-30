@@ -3,15 +3,18 @@ import { FlatList, StyleSheet, View } from "react-native";
 import Header from "../containers/Header";
 import CreateItem from "../containers/CreateItem";
 import ListItem from "../containers/ListItem";
-import { imageHeight, item, list } from "../utils";
+import { imageHeight, Item, List } from "../utils";
 import ModalAlert from "../components/ModalAlert";
+import { useTheme } from "../store/globalTheme";
 
 let itemText = "";
 
 const Main: FC = (): JSX.Element => {
-  const [items, setItems] = useState<list>([]);
+  const [items, setItems] = useState<List>([]);
   const [visibleActionModal, setVisibleActionModal] = useState<boolean>(false);
   const [visibleErrorModal, setVisibleErrorModal] = useState<boolean>(false);
+
+  const { theme } = useTheme();  
 
   const changeVisibleActionModal = () => {
     setVisibleActionModal(!visibleActionModal);
@@ -39,7 +42,7 @@ const Main: FC = (): JSX.Element => {
     setItems(newItems);
   };
 
-  const handleItemSubmit = (item: item) => {
+  const handleItemSubmit = (item: Item) => {
     if (items.some(element => element.text == item.text)) {
       itemText = item.text.toString();
       changeVisibleErrorModal();
@@ -48,7 +51,7 @@ const Main: FC = (): JSX.Element => {
     setItems(currentItems => [item, ...currentItems]);
   };
 
-  const renderItem = ({ item }: { item: item }) => {
+  const renderItem = ({ item }: { item: Item }) => {
     return (
       <ListItem
         item={item}
@@ -59,7 +62,7 @@ const Main: FC = (): JSX.Element => {
   };
 
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, { backgroundColor: theme.container }]}>
       <View style={styles.header}>
         <Header />
         <CreateItem onSubmit={handleItemSubmit} />
@@ -99,7 +102,6 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "flex-start",
-    backgroundColor: "#F2F1F6",
   },
   header: {
     width: "100%",

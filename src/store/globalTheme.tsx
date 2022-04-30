@@ -2,18 +2,18 @@ import { FC, useState, createContext, useContext } from "react";
 import {
   dark,
   light,
-  globalThemeType,
-  changeThemeType,
+  GlobalTheme,
+  ChangeThemeType,
   changeTheme,
   initialTheme,
 } from "../utils";
 
-const ThemeContext = createContext<globalThemeType>(initialTheme);
+const ThemeContext = createContext<GlobalTheme>(initialTheme);
 
-const ChangeThemeContext = createContext<changeThemeType>(changeTheme);
+const ChangeThemeContext = createContext<ChangeThemeType>(changeTheme);
 
 const ThemeProvider: FC = ({ children }): JSX.Element => {
-  const [globalTheme, setGlobalTheme] = useState<globalThemeType>(initialTheme);
+  const [globalTheme, setGlobalTheme] = useState<GlobalTheme>(initialTheme);
 
   const changeTheme = () => {
     setGlobalTheme({

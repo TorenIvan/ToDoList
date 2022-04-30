@@ -8,6 +8,7 @@ import {
 } from "react-native";
 import { FC } from "react";
 import { PopUpAlert } from "../utils";
+import { useTheme } from "../store/globalTheme";
 
 interface Props {
   isVisible: boolean;
@@ -19,6 +20,7 @@ interface Props {
 
 const ModalAlert: FC<Props> = (props): JSX.Element => {
   const { isVisible, onChangeVisible, onDeleteItem, itemText, type } = props;
+  const { theme } = useTheme();
 
   let text = `ToDo item with text "${itemText}" already exists.\nPlease, try again!`;
   if (type == "action")
@@ -45,22 +47,22 @@ const ModalAlert: FC<Props> = (props): JSX.Element => {
       >
         <TouchableWithoutFeedback onPress={closeOnPressingOutside}>
           <View style={styles.centeredView}>
-            <View style={styles.modalView}>
+            <View style={[styles.modalView, { backgroundColor: theme.totalWhite, shadowColor: theme.totalBlack }]}>
               <Text style={styles.modalText}>{text}</Text>
               <View style={styles.buttonContainer}>
                 {type == "action" && (
                   <Pressable
-                    style={[styles.button, styles.buttonClose]}
+                    style={[styles.button, { backgroundColor: theme.alertButton }]}
                     onPress={handleConfirm}
                   >
-                    <Text style={styles.textStyle}>Yes</Text>
+                    <Text style={[styles.textStyle, { color: theme.totalWhite }]}>Yes</Text>
                   </Pressable>
                 )}
                 <Pressable
-                  style={[styles.button, styles.buttonClose]}
+                  style={[styles.button, { backgroundColor: theme.alertButton }]}
                   onPress={onChangeVisible}
                 >
-                  <Text style={[styles.textStyle, styles.extraButtonPadding]}>
+                  <Text style={[styles.textStyle, styles.extraButtonPadding, { color: theme.totalWhite }]}>
                     {type == "error" ? "OK" : "NO"}
                   </Text>
                 </Pressable>
@@ -91,11 +93,9 @@ const styles = StyleSheet.create({
     flex: 0.25,
     zIndex: -1,
     margin: 20,
-    backgroundColor: "white",
     borderRadius: 20,
     padding: 25,
     justifyContent: "space-between",
-    shadowColor: "#000",
     shadowOffset: {
       width: 0,
       height: 2,
@@ -113,14 +113,7 @@ const styles = StyleSheet.create({
     padding: 10,
     elevation: 2,
   },
-  buttonOpen: {
-    backgroundColor: "#F194FF",
-  },
-  buttonClose: {
-    backgroundColor: "#2196F3",
-  },
   textStyle: {
-    color: "white",
     fontWeight: "bold",
     textAlign: "center",
   },

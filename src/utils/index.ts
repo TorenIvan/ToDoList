@@ -1,5 +1,5 @@
 import { dark, light } from "./constants/theme";
-import { changeTheme, changeThemeType, RadioButtonValueType, PopUpAlert, item, list } from "./constants/types";
+import { changeTheme, ChangeThemeType, RadioButtonValueType, PopUpAlert, Item, List } from "./constants/types";
 import Strings from "./constants/strings";
 
 /*** Enums ***/
@@ -8,18 +8,18 @@ export { Strings };
 /*** Types ***/
 type Theme = typeof light | typeof dark;
 
-type globalThemeType = {
+type GlobalTheme = {
   isLight: boolean;
   theme: Theme;
 };
 
-export { globalThemeType, changeThemeType, changeTheme, Theme, RadioButtonValueType, PopUpAlert, item, list };
+export { GlobalTheme, ChangeThemeType, changeTheme, Theme, RadioButtonValueType, PopUpAlert, Item, List };
 
 /*** Metrics ***/
 export { imageHeight, itemHeight } from "./constants/dimensions";
 
 /*** Themes ***/
-const initialTheme: globalThemeType = {
+const initialTheme: GlobalTheme = {
   theme: { ...light },
   isLight: true,
 };

@@ -1,14 +1,14 @@
 declare function changeTheme(): void;
-type changeThemeType = typeof changeTheme;
+type ChangeThemeType = typeof changeTheme;
 
 type RadioButtonValueType = "checked" | "unchecked";
 
 type PopUpAlert = "error" | "action";
 
-type item = {
+type Item = {
   checked: RadioButtonValueType;
   text: String;
 };
-type list = Array<item> | [];
+type List = Array<Item> | [];
 
-export { changeTheme, changeThemeType, RadioButtonValueType, PopUpAlert, item, list };
+export { changeTheme, ChangeThemeType, RadioButtonValueType, PopUpAlert, Item, List };

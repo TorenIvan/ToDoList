@@ -6,7 +6,7 @@ import {
   JosefinSans_700Bold,
 } from "@expo-google-fonts/josefin-sans";
 import ThemeProvider from "./src/store/globalTheme";
-import Main from "./src/screens/Main";
+import ToDoList from "./src/screens/ToDoList";
 
 const App: React.FC = (): JSX.Element => {
   let [fontsLoaded] = useFonts({
@@ -17,7 +17,7 @@ const App: React.FC = (): JSX.Element => {
   if (!fontsLoaded) return <AppLoading />;
   return (
     <ThemeProvider>
-      <Main/>
+      <ToDoList/>
     </ThemeProvider>
   );
 };

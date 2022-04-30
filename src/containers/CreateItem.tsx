@@ -30,8 +30,6 @@ const CreateItem: React.FC<Props> = ({ onSubmit }): JSX.Element => {
     }
   };
 
-  let textColor = theme.itemText;
-  if (checked == "checked") textColor = "#B6B5BB";
   return (
     <View style={[styles.itemContainer, { backgroundColor: theme.itemContainer }]}>
       <View style={styles.radioButtonContainer}>
@@ -46,15 +44,15 @@ const CreateItem: React.FC<Props> = ({ onSubmit }): JSX.Element => {
         <TextInput
           style={
             checked == "checked"
-              ? [styles.textInput, styles.linethrough, { color: textColor }]
-              : [styles.textInput, { color: theme.itemText }]
+              ? [styles.textInput, { color: theme.itemTextChecked }, styles.linethrough]
+              : [styles.textInput, { color: theme.itemNewText }]
           }
           editable
           maxLength={35}
           multiline={false}
           onChangeText={handleTextChange}
           placeholder="Create a new todo"
-          placeholderTextColor={theme.itemNewText}
+          placeholderTextColor={theme.itemPlaceholderNewText}
           returnKeyType="done"
           returnKeyLabel="done"
           onSubmitEditing={submitItem}
