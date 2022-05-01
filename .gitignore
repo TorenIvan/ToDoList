@@ -3,6 +3,8 @@ node_modules/
 dist/
 npm-debug.*
 *.jks
+.jest/
+coverage/
 *.p8
 *.p12
 *.key
