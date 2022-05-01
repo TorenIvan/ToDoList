@@ -1,7 +1,7 @@
-import { StyleSheet, Text, View, Pressable } from "react-native";
+import { StyleSheet, Pressable } from "react-native";
 import { FC, memo } from "react";
-import { RadioButtonValueType } from "../../utils";
-import { CheckIcon } from "../../assets";
+import { RadioButtonValueType, Strings } from "../utils";
+import { CheckIcon } from "../assets";
 
 interface Props {
   value: RadioButtonValueType;
@@ -18,13 +18,13 @@ const RadioButton: FC<Props> = (props): JSX.Element => {
   return (
     <Pressable
       style={
-        value == "checked"
+        value == Strings.Checked
           ? [styles.circle, { borderColor: borderColor, backgroundColor: checkedColor }]
           : [styles.circle, { borderColor: borderColor }]
       }
       onPress={handlePress}
     >
-      {value == "checked" && <CheckIcon />}
+      {value == Strings.Checked && <CheckIcon />}
     </Pressable>
   );
 };

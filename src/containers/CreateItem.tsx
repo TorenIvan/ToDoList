@@ -1,20 +1,20 @@
 import { StyleSheet, TextInput, View } from "react-native";
-import { RadioButtonValueType, itemHeight } from "../utils";
+import { RadioButtonValueType, itemHeight, Strings } from "../utils";
 import React, { useState } from "react";
 import { useTheme } from "../store/globalTheme";
-import RadioButton from "../components/Buttons/RadioButton";
+import RadioButton from "../components/RadioButton";
 
 interface Props {
   onSubmit: ({ checked, text }: { checked: RadioButtonValueType; text: String }) => void;
 }
 
 const CreateItem: React.FC<Props> = ({ onSubmit }): JSX.Element => {
-  const [checked, setChecked] = useState<RadioButtonValueType>("unchecked");
-  const [newText, setNewText] = useState<String>("");
-  const { theme } = useTheme();  
+  const [checked, setChecked] = useState<RadioButtonValueType>(Strings.Unchecked);
+  const [newText, setNewText] = useState<String>(Strings.EmptyString);
+  const { theme } = useTheme();
 
   const handleRadioButtonPress = () => {
-    setChecked(checked == "checked" ? "unchecked" : "checked");
+    setChecked(checked == Strings.Checked ? Strings.Unchecked : Strings.Checked);
   };
 
   const handleTextChange = (text: String) => {
@@ -26,7 +26,7 @@ const CreateItem: React.FC<Props> = ({ onSubmit }): JSX.Element => {
     if (text.length > 0) {
       onSubmit({ checked, text });
       setNewText("");
-      setChecked("unchecked");
+      setChecked(Strings.Unchecked);
     }
   };
 
@@ -43,7 +43,7 @@ const CreateItem: React.FC<Props> = ({ onSubmit }): JSX.Element => {
       <View style={styles.textInputContainer}>
         <TextInput
           style={
-            checked == "checked"
+            checked == Strings.Checked
               ? [styles.textInput, { color: theme.itemTextChecked }, styles.linethrough]
               : [styles.textInput, { color: theme.itemNewText }]
           }
@@ -51,7 +51,7 @@ const CreateItem: React.FC<Props> = ({ onSubmit }): JSX.Element => {
           maxLength={35}
           multiline={false}
           onChangeText={handleTextChange}
-          placeholder="Create a new todo"
+          placeholder={Strings.CreateTodo.toString()}
           placeholderTextColor={theme.itemPlaceholderNewText}
           returnKeyType="done"
           returnKeyLabel="done"

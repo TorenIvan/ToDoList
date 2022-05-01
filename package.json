@@ -7,6 +7,7 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
+    "test": "jest __tests__/ --coverage",
     "eject": "expo eject"
   },
   "dependencies": {

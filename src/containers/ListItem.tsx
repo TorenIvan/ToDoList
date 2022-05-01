@@ -1,8 +1,8 @@
 import { Pressable, StyleSheet, Text, View } from "react-native";
-import { Item, itemHeight } from "../utils";
+import { Item, itemHeight, Strings } from "../utils";
 import React, { memo } from "react";
 import { useTheme } from "../store/globalTheme";
-import RadioButton from "../components/Buttons/RadioButton";
+import RadioButton from "../components/RadioButton";
 import { CrossIcon } from "../assets";
 
 interface Props {
@@ -40,7 +40,7 @@ const ListItem: React.FC<Props> = ({ item: { checked, text }, onDeleteItem, onCh
       <View style={styles.textContainer}>
         <Text
           style={
-            checked == "checked"
+            checked == Strings.Checked
               ? [styles.text, { color: theme.itemTextChecked }, styles.linethrough]
               : [styles.text, { color: theme.itemText }]
           }

@@ -7,7 +7,7 @@ import {
   TouchableWithoutFeedback,
 } from "react-native";
 import { FC } from "react";
-import { PopUpAlert } from "../utils";
+import { PopUpAlert, Strings } from "../utils";
 import { useTheme } from "../store/globalTheme";
 
 interface Props {
@@ -18,16 +18,17 @@ interface Props {
   type: PopUpAlert;
 }
 
+let text: String;
+
 const ModalAlert: FC<Props> = (props): JSX.Element => {
   const { isVisible, onChangeVisible, onDeleteItem, itemText, type } = props;
   const { theme } = useTheme();
 
-  let text = `ToDo item with text "${itemText}" already exists.\nPlease, try again!`;
-  if (type == "action")
-    text = `Are you sure you want to delete the item with text "${itemText}" ?`;
+  if (type == Strings.Error)  text = Strings.ErrorAlert1 + itemText + Strings.ErrorAlert2;
+  if (type == Strings.Action) text = Strings.ActionAlert + itemText + Strings.QuestionMark;
 
   const closeOnPressingOutside = () => {
-    if (type == "error") onChangeVisible();
+    if (type == Strings.Error) onChangeVisible();
   };
 
   const handleConfirm = () => {
@@ -38,7 +39,7 @@ const ModalAlert: FC<Props> = (props): JSX.Element => {
   return (
     <View style={styles.modalContainer}>
       <Modal
-        animationType="slide"
+        animationType={Strings.Slide}
         transparent={true}
         visible={isVisible}
         onRequestClose={() => {
@@ -47,23 +48,36 @@ const ModalAlert: FC<Props> = (props): JSX.Element => {
       >
         <TouchableWithoutFeedback onPress={closeOnPressingOutside}>
           <View style={styles.centeredView}>
-            <View style={[styles.modalView, { backgroundColor: theme.totalWhite, shadowColor: theme.totalBlack }]}>
+            <View
+              style={[
+                styles.modalView,
+                { backgroundColor: theme.totalWhite, shadowColor: theme.totalBlack },
+              ]}
+            >
               <Text style={styles.modalText}>{text}</Text>
               <View style={styles.buttonContainer}>
-                {type == "action" && (
+                {type == Strings.Action && (
                   <Pressable
                     style={[styles.button, { backgroundColor: theme.alertButton }]}
                     onPress={handleConfirm}
                   >
-                    <Text style={[styles.textStyle, { color: theme.totalWhite }]}>Yes</Text>
+                    <Text style={[styles.textStyle, { color: theme.totalWhite }]}>
+                      Yes
+                    </Text>
                   </Pressable>
                 )}
                 <Pressable
                   style={[styles.button, { backgroundColor: theme.alertButton }]}
                   onPress={onChangeVisible}
                 >
-                  <Text style={[styles.textStyle, styles.extraButtonPadding, { color: theme.totalWhite }]}>
-                    {type == "error" ? "OK" : "NO"}
+                  <Text
+                    style={[
+                      styles.textStyle,
+                      styles.extraButtonPadding,
+                      { color: theme.totalWhite },
+                    ]}
+                  >
+                    {type == Strings.Error ? Strings.Ok : Strings.No}
                   </Text>
                 </Pressable>
               </View>

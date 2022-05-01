@@ -32,7 +32,7 @@ const Header: React.FC = (): JSX.Element => {
               },
             ]}
           >
-            {Strings.TODO}
+            {Strings.Todo}
           </Text>
           <TouchableOpacity onPress={onThemeChange}>
             {isLight ? <MoonIcon /> : <SunIcon />}

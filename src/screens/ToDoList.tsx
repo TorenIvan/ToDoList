@@ -3,18 +3,26 @@ import { FlatList, StyleSheet, View } from "react-native";
 import Header from "../containers/Header";
 import CreateItem from "../containers/CreateItem";
 import ListItem from "../containers/ListItem";
-import { imageHeight, Item, List } from "../utils";
+import {
+  filterListByItem,
+  findItemByText,
+  modifyItemType,
+  imageHeight,
+  Item,
+  List,
+  Strings,
+} from "../utils";
 import ModalAlert from "../components/ModalAlert";
 import { useTheme } from "../store/globalTheme";
 
-let itemText = "";
+let itemText = Strings.EmptyString.toString();
 
-const Main: FC = (): JSX.Element => {
+const ToDoList: FC = (): JSX.Element => {
   const [items, setItems] = useState<List>([]);
   const [visibleActionModal, setVisibleActionModal] = useState<boolean>(false);
   const [visibleErrorModal, setVisibleErrorModal] = useState<boolean>(false);
 
-  const { theme } = useTheme();  
+  const { theme } = useTheme();
 
   const changeVisibleActionModal = () => {
     setVisibleActionModal(!visibleActionModal);
@@ -30,20 +38,18 @@ const Main: FC = (): JSX.Element => {
   };
 
   const deleteItem = (itemKey: String) => {
-    const newItems = [...items].filter(item => item.text != itemKey);
+    const newItems = filterListByItem(itemKey, items);
     setItems(newItems);
   };
 
   const handleCheckButtonPress = (itemKey: String) => {
-    const newItems = [...items];
-    const index = newItems.findIndex(item => item.text == itemKey);
-    const checked = newItems[index].checked == "checked" ? "unchecked" : "checked";
-    newItems[index] = { ...newItems[index], checked: checked };
+    const newItems = modifyItemType(itemKey, items);
     setItems(newItems);
   };
 
   const handleItemSubmit = (item: Item) => {
-    if (items.some(element => element.text == item.text)) {
+    const itemFound = findItemByText(item.text, items);
+    if (itemFound){
       itemText = item.text.toString();
       changeVisibleErrorModal();
       return;
@@ -73,7 +79,7 @@ const Main: FC = (): JSX.Element => {
           onChangeVisible={changeVisibleActionModal}
           onDeleteItem={deleteItem}
           itemText={itemText}
-          type={"action"}
+          type={Strings.Action}
         />
       )}
       {visibleErrorModal && (
@@ -82,7 +88,7 @@ const Main: FC = (): JSX.Element => {
           onChangeVisible={changeVisibleErrorModal}
           onDeleteItem={deleteItem}
           itemText={itemText}
-          type={"error"}
+          type={Strings.Error}
         />
       )}
       <FlatList
@@ -95,7 +101,7 @@ const Main: FC = (): JSX.Element => {
   );
 };
 
-export default Main;
+export default ToDoList;
 
 const styles = StyleSheet.create({
   container: {

@@ -1,6 +1,9 @@
 import { dark, light } from "./constants/theme";
 import { changeTheme, ChangeThemeType, RadioButtonValueType, PopUpAlert, Item, List } from "./constants/types";
 import Strings from "./constants/strings";
+import filterListByItem from "./helpers/filterListByItem";
+import modifyItemType from "./helpers/modifyItemType";
+import findItemByText from "./helpers/findItemByText";
 
 /*** Enums ***/
 export { Strings };
@@ -25,3 +28,6 @@ const initialTheme: GlobalTheme = {
 };
 
 export { dark, light, initialTheme };
+
+/*** Helper Functions ***/
+export { filterListByItem, modifyItemType, findItemByText }
