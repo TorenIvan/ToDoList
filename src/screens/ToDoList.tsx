@@ -15,7 +15,7 @@ import {
 import ModalAlert from "../components/ModalAlert";
 import { useTheme } from "../store/globalTheme";
 
-let itemText = Strings.EmptyString.toString();
+let itemText = Strings.EmptyString.toString();    //toString() to just declare it's type
 
 const ToDoList: FC = (): JSX.Element => {
   const [items, setItems] = useState<List>([]);
