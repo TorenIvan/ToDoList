@@ -39,7 +39,7 @@ const ModalAlert: FC<Props> = (props): JSX.Element => {
   return (
     <View style={styles.modalContainer}>
       <Modal
-        animationType={Strings.Slide}
+        animationType="slide"
         transparent={true}
         visible={isVisible}
         onRequestClose={() => {

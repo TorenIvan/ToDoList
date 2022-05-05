@@ -6,7 +6,6 @@ enum Strings {
   Checked = "checked",
   Unchecked = "unchecked",
   CreateTodo = "Create a new todo",
-  Slide = "slide",
   Ok = "OK",
   No = "NO",
   ErrorAlert1 = "ToDo item with text ",
