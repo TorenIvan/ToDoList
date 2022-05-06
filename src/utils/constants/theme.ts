@@ -2,21 +2,21 @@ const primary = {
   totalBlack: "#000",
   totalWhite: "#FFF",
   brightBlue: "hsl(220, 98%, 61%)",
-  container: "#F2F1F6",
 };
 
 /* Change theming as you like */
 export const dark = {
   ...primary,
+  container: "#181824",
   titleText: "#FFFCFF",
-  itemBorder: "#E6E5EB",
-  itemContainer: "#FFFFFF",
-  itemPlaceholderNewText: "#C9C8CD",
-  itemNewText: "#88878F",
-  itemText: "#717287",
-  itemTextChecked: "#B6B5BB",
-  borderRadioButton: "#F4F4F6",
-  backgroundRadioButton: "#A97DF9",
+  itemBorder: "#37394E",
+  itemContainer: "#25273C",
+  itemPlaceholderNewText: "#6B6D82",
+  itemNewText: "#74768B",
+  itemText: "#9799B2",
+  itemTextChecked: "#4B4D64",
+  borderRadioButton: "hsl(234, 39%, 85%)",
+  backgroundRadioButton: "#A380F8",
   removeButton: "#EAE9F1",
   strikethrough: "#E3E3E5",
   lastListItemText: "#B8B7BD",
@@ -27,6 +27,7 @@ export const dark = {
 
 export const light = {
   ...primary,
+  container: "#F2F1F6",
   titleText: "#FFFCFF",
   itemBorder: "#E6E5EB",
   itemContainer: "#FFFFFF",

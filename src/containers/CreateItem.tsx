@@ -25,7 +25,7 @@ const CreateItem: React.FC<Props> = ({ onSubmit }): JSX.Element => {
     const text = newText.trim();
     if (text.length > 0) {
       onSubmit({ checked, text });
-      setNewText("");
+      setNewText(Strings.EmptyString);
       setChecked(Strings.Unchecked);
     }
   };
