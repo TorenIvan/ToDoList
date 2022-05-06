@@ -40,7 +40,7 @@ const ModalAlert: FC<Props> = (props): JSX.Element => {
     <View style={styles.modalContainer}>
       <Modal
         animationType="slide"
-        transparent={true}
+        transparent
         visible={isVisible}
         onRequestClose={() => {
           onChangeVisible();
@@ -62,7 +62,7 @@ const ModalAlert: FC<Props> = (props): JSX.Element => {
                     onPress={handleConfirm}
                   >
                     <Text style={[styles.textStyle, { color: theme.totalWhite }]}>
-                      Yes
+                      {Strings.Yes}
                     </Text>
                   </Pressable>
                 )}
