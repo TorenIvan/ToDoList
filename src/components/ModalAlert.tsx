@@ -24,8 +24,8 @@ const ModalAlert: FC<Props> = (props): JSX.Element => {
   const { isVisible, onChangeVisible, onDeleteItem, itemText, type } = props;
   const { theme } = useTheme();
 
-  if (type == Strings.Error)  text = Strings.ErrorAlert1 + itemText + Strings.ErrorAlert2;
-  if (type == Strings.Action) text = Strings.ActionAlert + itemText + Strings.QuestionMark;
+  if (type == Strings.Error)  text = Strings.ErrorAlert1 + "\"" + itemText + "\"" + Strings.ErrorAlert2;
+  if (type == Strings.Action) text = Strings.ActionAlert + "\"" + itemText + "\"" + Strings.QuestionMark;
 
   const closeOnPressingOutside = () => {
     if (type == Strings.Error) onChangeVisible();
