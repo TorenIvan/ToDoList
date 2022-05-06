@@ -1,6 +1,6 @@
-import { StyleSheet, TextInput, View } from "react-native";
+import { Platform, StyleSheet, TextInput, View, Keyboard } from "react-native";
 import { RadioButtonValueType, itemHeight, Strings } from "../utils";
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { useTheme } from "../store/globalTheme";
 import RadioButton from "../components/RadioButton";
 
@@ -12,6 +12,24 @@ const CreateItem: React.FC<Props> = ({ onSubmit }): JSX.Element => {
   const [checked, setChecked] = useState<RadioButtonValueType>(Strings.Unchecked);
   const [newText, setNewText] = useState<String>(Strings.EmptyString);
   const { theme } = useTheme();
+
+  const inputRef = useRef<TextInput>(null);
+
+  useEffect(() => {
+    const keyboardDidHideListener = Keyboard.addListener(
+      'keyboardDidHide',
+      () => {
+        handleBackButtonClick();
+      }
+    );
+    return () => {
+      keyboardDidHideListener.remove();
+    };
+  }, []);
+
+  const handleBackButtonClick: any = () => {
+    inputRef?.current?.blur();
+  };
 
   const handleRadioButtonPress = () => {
     setChecked(checked == Strings.Checked ? Strings.Unchecked : Strings.Checked);
@@ -42,6 +60,7 @@ const CreateItem: React.FC<Props> = ({ onSubmit }): JSX.Element => {
       </View>
       <View style={styles.textInputContainer}>
         <TextInput
+          ref={inputRef}
           style={
             checked == Strings.Checked
               ? [styles.textInput, { color: theme.itemTextChecked }, styles.linethrough]
@@ -53,8 +72,7 @@ const CreateItem: React.FC<Props> = ({ onSubmit }): JSX.Element => {
           onChangeText={handleTextChange}
           placeholder={Strings.CreateTodo.toString()}
           placeholderTextColor={theme.itemPlaceholderNewText}
-          returnKeyType="done"
-          returnKeyLabel="done"
+          autoFocus
           onSubmitEditing={submitItem}
         >
           {newText}
