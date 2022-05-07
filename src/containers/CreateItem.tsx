@@ -16,12 +16,9 @@ const CreateItem: React.FC<Props> = ({ onSubmit }): JSX.Element => {
   const inputRef = useRef<TextInput>(null);
 
   useEffect(() => {
-    const keyboardDidHideListener = Keyboard.addListener(
-      'keyboardDidHide',
-      () => {
-        handleBackButtonClick();
-      }
-    );
+    const keyboardDidHideListener = Keyboard.addListener("keyboardDidHide", () => {
+      handleBackButtonClick();
+    });
     return () => {
       keyboardDidHideListener.remove();
     };
