@@ -7,7 +7,7 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
-    "test": "jest __tests__/ --coverage",
+    "test": "jest __tests__/ --verbose --coverage",
     "updateSnapshots": "jest -u --coverage=false",
     "eject": "expo eject"
   },

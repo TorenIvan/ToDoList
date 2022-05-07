@@ -49,6 +49,7 @@ const CreateItem: React.FC<Props> = ({ onSubmit }): JSX.Element => {
     <View style={[styles.itemContainer, { backgroundColor: theme.itemContainer }]}>
       <View style={styles.radioButtonContainer}>
         <RadioButton
+          testId="CheckBox"
           value={checked}
           onRadioButtonPress={handleRadioButtonPress}
           checkedColor={theme.backgroundRadioButton}
@@ -64,7 +65,7 @@ const CreateItem: React.FC<Props> = ({ onSubmit }): JSX.Element => {
               : [styles.textInput, { color: theme.itemNewText }]
           }
           editable
-          maxLength={55}
+          maxLength={56}
           multiline={false}
           onChangeText={handleTextChange}
           placeholder={Strings.CreateTodo.toString()}

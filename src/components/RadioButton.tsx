@@ -4,6 +4,7 @@ import { RadioButtonValueType, Strings } from "../utils";
 import { CheckIcon } from "../assets";
 
 interface Props {
+  testId: string,
   value: RadioButtonValueType;
   onRadioButtonPress(): void;
   borderColor: string;

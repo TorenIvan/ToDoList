@@ -1,0 +1,94 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Create Item Container Testing snapshot 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "alignItems": "center",
+        "borderRadius": 5,
+        "flexDirection": "row",
+        "height": 106.72,
+        "justifyContent": "flex-start",
+        "marginTop": "16%",
+        "width": "85%",
+      },
+      Object {
+        "backgroundColor": "#FFFFFF",
+      },
+    ]
+  }
+>
+  <View
+    style={
+      Object {
+        "marginHorizontal": "5%",
+      }
+    }
+  >
+    <View
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Array [
+          Object {
+            "alignItems": "center",
+            "borderRadius": 110,
+            "borderWidth": 2,
+            "height": 25,
+            "justifyContent": "center",
+            "width": 25,
+          },
+          Object {
+            "borderColor": "hsl(233, 11%, 84%)",
+          },
+        ]
+      }
+    />
+  </View>
+  <View
+    style={
+      Object {
+        "flex": 0.9,
+      }
+    }
+  >
+    <TextInput
+      allowFontScaling={true}
+      autoFocus={true}
+      editable={true}
+      maxLength={56}
+      multiline={false}
+      onChangeText={[Function]}
+      onSubmitEditing={[Function]}
+      placeholder="Create a new todo"
+      placeholderTextColor="#C9C8CD"
+      rejectResponderTermination={true}
+      style={
+        Array [
+          Object {
+            "fontFamily": "JosefinSans-Regular",
+            "fontSize": 16,
+          },
+          Object {
+            "color": "#88878F",
+          },
+        ]
+      }
+      underlineColorAndroid="transparent"
+    >
+      
+    </TextInput>
+  </View>
+</View>
+`;
