@@ -35,7 +35,7 @@ export const light = {
   itemNewText: "#88878F",
   itemText: "#717287",
   itemTextChecked: "#B6B5BB",
-  borderRadioButton: "#F4F4F6",
+  borderRadioButton: "hsl(233, 11%, 84%)",
   backgroundRadioButton: "#A97DF9",
   removeButton: "#EAE9F1",
   strikethrough: "#E3E3E5",

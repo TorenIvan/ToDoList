@@ -67,7 +67,7 @@ const CreateItem: React.FC<Props> = ({ onSubmit }): JSX.Element => {
               : [styles.textInput, { color: theme.itemNewText }]
           }
           editable
-          maxLength={35}
+          maxLength={55}
           multiline={false}
           onChangeText={handleTextChange}
           placeholder={Strings.CreateTodo.toString()}
