@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1651927599383" clover="3.2.0">
-  <project timestamp="1651927599383" name="All files">
-    <metrics statements="71" coveredstatements="48" conditionals="16" coveredconditionals="7" methods="24" coveredmethods="9" elements="111" coveredelements="64" complexity="0" loc="71" ncloc="71" packages="10" files="21" classes="21"/>
+<coverage generated="1651930080565" clover="3.2.0">
+  <project timestamp="1651930080565" name="All files">
+    <metrics statements="71" coveredstatements="53" conditionals="16" coveredconditionals="8" methods="24" coveredmethods="10" elements="111" coveredelements="71" complexity="0" loc="71" ncloc="71" packages="10" files="21" classes="21"/>
     <package name="assets">
       <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       <file name="index.ts" path="C:\Users\l1vra\Documents\personal\challenges\todolistapp\src\assets\index.ts">
@@ -39,9 +39,9 @@
       <file name="RadioButton.tsx" path="C:\Users\l1vra\Documents\personal\challenges\todolistapp\src\components\RadioButton.tsx">
         <metrics statements="5" coveredstatements="5" conditionals="4" coveredconditionals="4" methods="2" coveredmethods="1"/>
         <line num="14" count="1" type="stmt"/>
-        <line num="15" count="3" type="stmt"/>
-        <line num="17" count="3" type="stmt"/>
-        <line num="19" count="3" type="stmt"/>
+        <line num="15" count="10" type="stmt"/>
+        <line num="17" count="10" type="stmt"/>
+        <line num="19" count="10" type="stmt"/>
         <line num="35" count="1" type="stmt"/>
       </file>
     </package>
@@ -69,32 +69,32 @@
       </file>
     </package>
     <package name="containers">
-      <metrics statements="24" coveredstatements="16" conditionals="6" coveredconditionals="3" methods="8" coveredmethods="4"/>
+      <metrics statements="24" coveredstatements="21" conditionals="6" coveredconditionals="4" methods="8" coveredmethods="5"/>
       <file name="CreateItem.tsx" path="C:\Users\l1vra\Documents\personal\challenges\todolistapp\src\containers\CreateItem.tsx">
-        <metrics statements="24" coveredstatements="16" conditionals="6" coveredconditionals="3" methods="8" coveredmethods="4"/>
+        <metrics statements="24" coveredstatements="21" conditionals="6" coveredconditionals="4" methods="8" coveredmethods="5"/>
         <line num="11" count="1" type="stmt"/>
-        <line num="12" count="3" type="stmt"/>
-        <line num="13" count="3" type="stmt"/>
-        <line num="14" count="3" type="stmt"/>
-        <line num="16" count="3" type="stmt"/>
-        <line num="18" count="3" type="stmt"/>
-        <line num="19" count="1" type="stmt"/>
+        <line num="12" count="10" type="stmt"/>
+        <line num="13" count="10" type="stmt"/>
+        <line num="14" count="10" type="stmt"/>
+        <line num="16" count="10" type="stmt"/>
+        <line num="18" count="10" type="stmt"/>
+        <line num="19" count="4" type="stmt"/>
         <line num="20" count="0" type="stmt"/>
-        <line num="22" count="1" type="stmt"/>
+        <line num="22" count="4" type="stmt"/>
         <line num="23" count="0" type="stmt"/>
-        <line num="27" count="3" type="stmt"/>
+        <line num="27" count="10" type="stmt"/>
         <line num="28" count="0" type="stmt"/>
-        <line num="31" count="3" type="stmt"/>
-        <line num="32" count="1" type="cond" truecount="1" falsecount="1"/>
-        <line num="35" count="3" type="stmt"/>
-        <line num="36" count="1" type="stmt"/>
-        <line num="39" count="3" type="stmt"/>
-        <line num="40" count="0" type="stmt"/>
-        <line num="41" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="42" count="0" type="stmt"/>
-        <line num="43" count="0" type="stmt"/>
-        <line num="44" count="0" type="stmt"/>
-        <line num="48" count="3" type="stmt"/>
+        <line num="31" count="10" type="stmt"/>
+        <line num="32" count="2" type="cond" truecount="1" falsecount="1"/>
+        <line num="35" count="10" type="stmt"/>
+        <line num="36" count="3" type="stmt"/>
+        <line num="39" count="10" type="stmt"/>
+        <line num="40" count="1" type="stmt"/>
+        <line num="41" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="42" count="1" type="stmt"/>
+        <line num="43" count="1" type="stmt"/>
+        <line num="44" count="1" type="stmt"/>
+        <line num="48" count="10" type="stmt"/>
         <line num="85" count="1" type="stmt"/>
       </file>
     </package>
@@ -110,7 +110,7 @@
         <line num="19" count="0" type="stmt"/>
         <line num="25" count="0" type="stmt"/>
         <line num="34" count="1" type="stmt"/>
-        <line num="35" count="3" type="stmt"/>
+        <line num="35" count="10" type="stmt"/>
         <line num="38" count="1" type="stmt"/>
         <line num="39" count="0" type="stmt"/>
       </file>
