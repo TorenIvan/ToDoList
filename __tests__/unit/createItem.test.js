@@ -10,6 +10,10 @@ describe("Create Item Container Testing", () => {
     expect(tree).toMatchSnapshot();
   });
 
+  it("should render without crushing", () => {
+    expect(tree.toJSON()).toBeTruthy();
+  });
+
   it("should render the placeholder when checkbox is not pressed no test is written", () => {
     expect(tree.root.findByType(TextInput).props.placeholder).toBe("Create a new todo");
   });
