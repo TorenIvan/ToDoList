@@ -64,7 +64,6 @@ describe("Create Item Container Testing", () => {
     );
   });
 
-  test("text input blurs when keyboard hides", () => {});
 
   test("text input becomes empty after submit", () => {
     const onSubmit = () => {};
