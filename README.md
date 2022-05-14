@@ -37,4 +37,4 @@ yarn start
 
 ## License
 
-[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://gitlab.com/Livrag/todolistapp/-/blob/master/LICENSE)
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://github.com/TorenIvan/ToDoList/blob/master/LICENSE)
