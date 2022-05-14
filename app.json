@@ -20,7 +20,8 @@
     "android": {
       "adaptiveIcon": {
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "package": "todo.package"
     },
     "web": {
       "favicon": "./assets/icons/favicon.png"
