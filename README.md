@@ -24,8 +24,8 @@ yarn start
 ![ScreenShot](https://gitlab.com/Livrag/todolistapp/-/blob/master/screenshots/deleteitem.jpg "Delete Task")
 
 #### Change to dark mode using the moon icon and go back to white mode by touching the sun icon
-<div align="center">
-  <img src="/screenshots/darkmode.jpg" width="100" height="100"/>
+<div align="left">
+  <img src="/screenshots/darkmode.jpg"/>
 </div>
 
 
