@@ -25,7 +25,7 @@ yarn start
 
 #### Change to dark mode using the moon icon and go back to white mode by touching the sun icon
 <div align="left">
-  <img src="/screenshots/darkmode.jpg"/>
+  <img src="/screenshots/darkmode.jpg" width="400" height="400"/>
 </div>
 
 
