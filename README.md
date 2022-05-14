@@ -15,13 +15,19 @@ yarn start
 ## Usage
 
 #### Create a new task
-![ScreenShot](https://gitlab.com/Livrag/todolistapp/-/blob/master/screenshots/initialitem.jpg "Create Task")
+<div align="left">
+  <img src="/screenshots/initialitem.jpg" width="500" height="800"/>
+</div>
 
 #### Make a task inactive by pressing its Checkbox
-![ScreenShot](https://gitlab.com/Livrag/todolistapp/-/blob/master/screenshots/inactiveitem.jpg "Inactive Task")
+<div align="left">
+  <img src="/screenshots/inactiveitem.jpg" width="500" height="800"/>
+</div>
 
 #### Delete a task by pressing the X button
-![ScreenShot](https://gitlab.com/Livrag/todolistapp/-/blob/master/screenshots/deleteitem.jpg "Delete Task")
+<div align="left">
+  <img src="/screenshots/deleteitem.jpg" width="500" height="800"/>
+</div>
 
 #### Change to dark mode using the moon icon and go back to white mode by touching the sun icon
 <div align="left">
